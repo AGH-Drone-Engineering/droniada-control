@@ -28,4 +28,43 @@ header *
 .map-wrapper
 {
     height: calc(100vh - 110px);
+    width: 75%;
+}
+main
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: stretch;
+}
+.right-list
+{
+    width: 25%;
+    text-align: center;
+    overflow: scroll;
+    height: 800px;
+}
+.right-list img
+{
+    width: 150px;
+    height: 150px;
+}
+.right-list h3
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.flex
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around; /* or space-evenly or space-around */
+    padding: 10px;
+}
+.flex-item
+{
+    /*flex-basis: calc(33.33% -  50px); /* adjust as per your requirement */
+    margin-bottom: 10px;
+    padding: 5px;
 }

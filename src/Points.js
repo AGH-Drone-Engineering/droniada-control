@@ -7,8 +7,8 @@ import L from "leaflet";
 // Define custom marker icon
 const icon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/crosshair.png',
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
   popupAnchor: [0, 0],
 });
 
