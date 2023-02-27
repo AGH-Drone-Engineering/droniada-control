@@ -2,7 +2,6 @@ import './App.css';
 import Header from './Header';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import './Firebase'
-import { collection, getDocs } from 'firebase/firestore/lite';
 import Points from './Points';
 import UnorderedPoints from './UnorderedPoints';
 
