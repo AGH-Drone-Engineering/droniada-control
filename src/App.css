@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+@import url("https://unpkg.com/leaflet@1.6.0/dist/leaflet.css");
+body
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+header
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+}
+header img
+{
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header *
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.map-wrapper
+{
+    height: calc(100vh - 110px);
+    width: 75%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+main
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: stretch;
 }
-
-.App-link {
-  color: #61dafb;
+.right-list
+{
+    width: 25%;
+    text-align: center;
+    overflow: scroll;
+    height: 800px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right-list img
+{
+    width: 150px;
+    height: 150px;
+}
+.right-list h3
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.flex
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around; /* or space-evenly or space-around */
+    padding: 10px;
+}
+.flex-item
+{
+    /*flex-basis: calc(33.33% -  50px); /* adjust as per your requirement */
+    margin-bottom: 10px;
+    padding: 5px;
 }
