@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 import { Marker, Popup } from "react-leaflet";
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from './Firebase';
+import L from 'leaflet';
 
 // Define custom marker icon
 const icon = L.icon({
@@ -12,26 +12,20 @@ const icon = L.icon({
   popupAnchor: [0, 0],
 });
 
-  
+
 export default function Points() {
 
- const [points, setPoints] = useState([]);
-  useEffect(() => {
-    // Initialize Firebase app
-    const db = getFirestore();
+  const [points, setPoints] = useState([]);
 
-    // Listen for changes to 'points' collection and update state
-    const unsubscribe = onSnapshot(collection(db, "map-points"), (querySnapshot) => {
-        
+  useEffect(() => {
+    return onSnapshot(collection(db, "map-points"), (querySnapshot) => {
       const data = querySnapshot.docs.map((doc) => {
         return { id: doc.id, ...doc.data() };
       });
       setPoints(data);
     });
-
-    // Clean up listener on unmount
-    return () => unsubscribe();
   }, []);
+
   return (
     <>
          {points.map((point) => (
