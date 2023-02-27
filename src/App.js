@@ -1,18 +1,12 @@
 import './App.css';
 import Header from './Header';
-import { MapContainer, TileLayer} from 'react-leaflet'
-import './Firebase'
+import { MapContainer, TileLayer } from 'react-leaflet'
 import Points from './Points';
 import UnorderedPoints from './UnorderedPoints';
 
-//const mapboxData= "pk.eyJ1IjoiYWdoLWRlIiwiYSI6ImNsZWxvajl3dDBtd3Qzd29kcnY4YjFxbmMifQ.xUC7tSyVs0LcHrdAf3XNgA";
-
-
-function App() {
+export default function App() {
   //Katowice Muchowiec 
   var position = { lat: 50.238284041030674, lng: 19.032943917374634 };
-
-  //const link = "https://api.mapbox.com/v4/mapbox.satellite/13/{x}/{y}@2x.jpg?access_token=" + mapboxData
 
   return (
     <div className="App">
@@ -40,5 +34,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
