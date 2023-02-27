@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './Header';
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer} from 'react-leaflet'
 import './Firebase'
 import Points from './Points';
 import UnorderedPoints from './UnorderedPoints';
@@ -12,7 +12,7 @@ function App() {
   //Katowice Muchowiec 
   var position = { lat: 50.238284041030674, lng: 19.032943917374634 };
 
-  const link = "https://api.mapbox.com/v4/mapbox.satellite/13/{x}/{y}@2x.jpg?access_token=" + mapboxData
+  //const link = "https://api.mapbox.com/v4/mapbox.satellite/13/{x}/{y}@2x.jpg?access_token=" + mapboxData
 
   return (
     <div className="App">

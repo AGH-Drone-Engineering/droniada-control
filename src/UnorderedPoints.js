@@ -28,7 +28,7 @@ export default function UnorderedPoints() {
                 <div className='flex-item'>
                 <br />
                 <br />
-                    <img src={"data:image/jpeg;base64,/9j/" + point.img}></img>
+                    <img src={"data:image/jpeg;base64,/9j/" + point.img} alt='Capture from drone'></img>
                     <h3>{point.name}</h3>
                 </div>
             ))}
