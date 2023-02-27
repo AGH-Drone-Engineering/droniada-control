@@ -5,7 +5,7 @@ import './Firebase'
 import Points from './Points';
 import UnorderedPoints from './UnorderedPoints';
 
-const mapboxData= "pk.eyJ1IjoiYWdoLWRlIiwiYSI6ImNsZWxvajl3dDBtd3Qzd29kcnY4YjFxbmMifQ.xUC7tSyVs0LcHrdAf3XNgA";
+//const mapboxData= "pk.eyJ1IjoiYWdoLWRlIiwiYSI6ImNsZWxvajl3dDBtd3Qzd29kcnY4YjFxbmMifQ.xUC7tSyVs0LcHrdAf3XNgA";
 
 
 function App() {
