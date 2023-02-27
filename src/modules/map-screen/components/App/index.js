@@ -1,8 +1,8 @@
-import './App.css';
-import Header from './Header';
 import { MapContainer, TileLayer } from 'react-leaflet';
-import Points from './Points';
-import UnorderedPoints from './UnorderedPoints';
+import './index.css';
+import Header from '../Header';
+import Points from '../Points';
+import UnorderedPoints from '../UnorderedPoints';
 
 export default function App() {
   // Katowice Muchowiec
