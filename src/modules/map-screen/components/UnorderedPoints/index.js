@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from './Firebase';
+import { db } from 'modules/data/fb';
 
 export default function UnorderedPoints() {
   const [points, setPoints] = useState([]);

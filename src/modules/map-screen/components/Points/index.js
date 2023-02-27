@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from './Firebase';
 import L from 'leaflet';
+import { db } from 'modules/data/fb';
 
 // Define custom marker icon
 const icon = L.icon({
