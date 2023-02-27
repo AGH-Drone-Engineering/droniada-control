@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
-import { collection, onSnapshot } from 'firebase/firestore';
 import L from 'leaflet';
-import { db } from 'modules/data/fb';
+import useMapPoints from 'modules/data/use-map-points';
 
 // Define custom marker icon
 const icon = L.icon({
@@ -13,17 +11,7 @@ const icon = L.icon({
 });
 
 export default function Points() {
-  const [points, setPoints] = useState([]);
-
-  useEffect(() => {
-    return onSnapshot(collection(db, 'map-points'), (querySnapshot) => {
-      const data = querySnapshot.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() };
-      });
-      setPoints(data);
-    });
-  }, []);
-
+  const points = useMapPoints();
   return (
     <>
          {points.map((point) => (

@@ -1,19 +1,7 @@
-import { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from 'modules/data/fb';
+import useMapPoints from 'modules/data/use-map-points';
 
 export default function UnorderedPoints() {
-  const [points, setPoints] = useState([]);
-
-  useEffect(() => {
-    return onSnapshot(collection(db, 'map-points'), (querySnapshot) => {
-      const data = querySnapshot.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() };
-      });
-      setPoints(data);
-    });
-  }, []);
-
+  const points = useMapPoints();
   return (
         <>
             <div className='flex'>
