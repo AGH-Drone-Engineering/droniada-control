@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
-import Points from '../Points';
+import Points from 'components/Points';
 
 function MapMover(p) {
   const map = useMap();

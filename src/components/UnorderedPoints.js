@@ -1,4 +1,4 @@
-import useMapPoints from 'modules/data/use-map-points';
+import useMapPoints from 'logic/useMapPoints';
 
 export default function UnorderedPoints(props) {
   const points = useMapPoints(props.db);

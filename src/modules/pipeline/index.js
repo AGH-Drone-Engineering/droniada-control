@@ -1,7 +1,6 @@
 
-import '../index.css';
-import Header from '../Header';
-import ModelRenderer from '../ModelRenderer';
+import Header from 'components/Header';
+import ModelRenderer from './components/ModelRenderer';
 
 export function PipelineScreen() {
   return (

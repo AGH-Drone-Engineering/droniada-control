@@ -1,10 +1,7 @@
-
-import '../index.css';
-import Header from '../Header';
-
-import UnorderedPoints from '../UnorderedPoints';
-import useInitalLocation from '../InitViewPosition/useInitalLocation';
-import MapRenderer from '../Map/map';
+import Header from 'components/Header';
+import UnorderedPoints from 'components/UnorderedPoints';
+import MapRenderer from 'components/Map';
+import useInitalLocation from 'logic/useInitalLocation';
 
 export function IntruderScreen() {
   const [position] = useInitalLocation();
