@@ -1,6 +1,6 @@
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import useMapPoints from 'modules/data/use-map-points';
+import useMapPoints from 'logic/useMapPoints';
 
 // Define custom marker icon
 const crosshairIcon = L.icon({
