@@ -9,7 +9,6 @@ export function PipelineScreen() {
 
       <Header></Header>
       <hr></hr>
-
       <main>
         <h2>Rurociąg</h2>
       </main>

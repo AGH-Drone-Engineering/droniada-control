@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from '@react-three/drei';
 
 export default function ModelRenderer() {
-  const gltf = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/model.glb');
+  const gltf = useLoader(GLTFLoader, 'https://firebasestorage.googleapis.com/v0/b/droniada-test-2023.appspot.com/o/model.glb?alt=media&token=9b2be752-4ba6-43aa-b404-54081006ea19');
   const meshRef = useRef();
 
   return (
