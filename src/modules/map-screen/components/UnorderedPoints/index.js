@@ -1,7 +1,7 @@
 import useMapPoints from 'modules/data/use-map-points';
 
-export default function UnorderedPoints() {
-  const points = useMapPoints();
+export default function UnorderedPoints(props) {
+  const points = useMapPoints(props.db);
   return (
         <>
             <div className='flex'>

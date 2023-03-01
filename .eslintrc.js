@@ -25,6 +25,7 @@ module.exports = {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
     'react/react-in-jsx-scope': 'off',
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    'react/prop-types': 0
   }
 };
