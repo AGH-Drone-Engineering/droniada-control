@@ -3,12 +3,12 @@ import UnorderedPoints from 'components/UnorderedPoints';
 import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
 
-export function IntruderScreen() {
+export default function IntruderScreen() {
   const [position] = useInitalLocation();
   return (
     <div className='App'>
 
-      <Header></Header>
+      <Header appName='Intruz' />
       <hr></hr>
 
       <main>

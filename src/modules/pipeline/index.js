@@ -2,11 +2,11 @@
 import Header from 'components/Header';
 import ModelRenderer from './components/ModelRenderer';
 
-export function PipelineScreen() {
+export default function PipelineScreen() {
   return (
     <div className='App'>
 
-      <Header></Header>
+      <Header appName='Rurociąg' />
       <hr></hr>
 
       <main>

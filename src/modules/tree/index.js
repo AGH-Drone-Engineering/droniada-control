@@ -1,11 +1,11 @@
 
 import Header from 'components/Header';
 
-export function TreeScreen() {
+export default function TreeScreen() {
   return (
     <div className='App'>
 
-      <Header></Header>
+      <Header appName='Drzewo Życia' />
       <hr></hr>
 
       <main>
