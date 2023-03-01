@@ -1,7 +1,7 @@
 import useMapPoints from 'logic/useMapPoints';
 
-export default function UnorderedPoints(props) {
-  const points = useMapPoints(props.db);
+export default function UnorderedPoints({ db }) {
+  const points = useMapPoints(db);
   return (
         <>
             <div className='flex'>

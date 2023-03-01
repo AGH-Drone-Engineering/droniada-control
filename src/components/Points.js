@@ -34,8 +34,8 @@ function getIcon(point) {
   }
 }
 
-export default function Points(props) {
-  const points = useMapPoints(props.db);
+export default function Points({ db }) {
+  const points = useMapPoints(db);
   return (
     <>
          {points.map((point) => (
