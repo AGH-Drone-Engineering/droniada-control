@@ -26,6 +26,7 @@ module.exports = {
     quotes: ['error', 'single'],
     'react/react-in-jsx-scope': 'off',
     'space-before-function-paren': ['error', 'never'],
-    'react/prop-types': 0
+    'react/prop-types': 0,
+    'react/no-unknown-property': 0
   }
 };
