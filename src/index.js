@@ -7,14 +7,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
       <Routes>
         <Route path="/droniada-control">
           <Route index element={<IntruderScreen />}></Route>
           <Route path="intruder" element={<IntruderScreen />} />
           <Route path="pipeline" element={<PipelineScreen />} />
-          <Route path="tree" element={<TreeScreen/>} />
+          <Route path="tree" element={<TreeScreen />} />
         </Route>
       </Routes>
     </BrowserRouter>
+  </React.StrictMode>
 );

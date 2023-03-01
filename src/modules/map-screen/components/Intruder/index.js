@@ -16,11 +16,11 @@ export function IntruderScreen() {
 
       <main>
         <div className='map-wrapper'>
-          <MapRenderer position={position}></MapRenderer>
+          <MapRenderer position={position} db={'map-points'}></MapRenderer>
         </div>
         <div className='right-list'>
             <h2><u>Znalezione punkty</u></h2>
-            <UnorderedPoints></UnorderedPoints>
+            <UnorderedPoints db={'map-points'}></UnorderedPoints>
         </div>
       </main>
 
