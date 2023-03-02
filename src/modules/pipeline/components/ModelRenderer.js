@@ -1,25 +1,28 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useEffect, useRef, useState } from 'react';
 import { Canvas } from 'react-three-fiber';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
 import { OrbitControls } from '@react-three/drei';
 import { ref, getDownloadURL } from 'firebase/storage';
 import { storage } from 'logic/fb';
 
 export default function ModelRenderer() {
   const [gltf, setGltf] = useState([]);
-  const meshRef = useRef();
+  const [loadErr, setLoadErr] = useState(false);
+  const targetRef = useRef();
+  const cameraRef = useRef();
 
   useEffect(() => {
-    getDownloadURL(ref(storage, '/untitled.obj'))
+    getDownloadURL(ref(storage, '/model.ply'))
       .then((url) => {
-        const loader = new OBJLoader();
+        const loader = new PLYLoader();
         loader.load(url, (gltf) => {
           setGltf(gltf);
+          cameraRef.current.lookAt(targetRef.current.position);
         });
       })
-      .catch((error) => {
-        setGltf({ gltf_error_fb: error });
+      .catch(() => {
+        setLoadErr(true);
       });
   }, []);
 
@@ -27,26 +30,31 @@ export default function ModelRenderer() {
     return <h2>Ładowanie modelu 3D...</h2>;
   }
 
-  if ('gltf_error_fb' in gltf) {
+  if (loadErr) {
     return <h2 style={{ color: 'red' }}>Wystąpił błąd podczas ładowania modelu, spróbuj odświeżyc aplikację.</h2>;
   }
 
   return (
-    <Canvas camera={{ position: [20, 20, 20], fov: 60 }}
+    <Canvas camera={{ position: [0, -10, 10], fov: 30 }}
       style={{
         backgroundColor: '#111a21',
         width: '100vw',
         height: '100vh'
       }}>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <ambientLight intensity={0.3} />
+      <spotLight position={[10, 20, 10]} angle={0.45} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
-      <mesh ref={meshRef} scale={[5, 5, 5]}>
+      <mesh ref={targetRef} scale={[1, 1, 1]} rotation={[-89.5, -0.01, 0]}>
         <primitive object={gltf} />
         <meshStandardMaterial color={'#AABBCC'} metalness={0.2} />
       </mesh>
 
-      <OrbitControls />
+      <OrbitControls
+       camera={cameraRef.current}
+        enableDamping
+        dampingFactor={0.5}
+        target={[1, -1, 1]}
+        />
     </Canvas>
   );
 }
