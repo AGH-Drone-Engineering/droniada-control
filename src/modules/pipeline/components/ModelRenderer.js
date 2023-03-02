@@ -1,12 +1,23 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useRef } from 'react';
-import { Canvas, useLoader } from 'react-three-fiber';
+import React, { useEffect, useRef, useState } from 'react';
+import { Canvas } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from '@react-three/drei';
 
 export default function ModelRenderer() {
-  const gltf = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/model.glb');
+  const [gltf, setGltf] = useState([]);
   const meshRef = useRef();
+
+  useEffect(() => {
+    const loader = new GLTFLoader();
+    loader.load(process.env.PUBLIC_URL + '/model.glb', (gltf) => {
+      setGltf(gltf);
+    });
+  }, []);
+
+  if (gltf.length === 0) {
+    return <h2>Ładowanie modelu 3D...</h2>;
+  }
 
   return (
     <Canvas camera={{ position: [12, 10, 12.25], fov: 30 }}
