@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from 'modules/data/fb';
+import { db } from 'logic/fb';
 
 // Katowice Muchowiec Fallback
 // const positionFallback = { lat: 50.238284041030674, lng: 19.032943917374634 };
