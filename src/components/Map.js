@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import Points from 'components/Points';
+import { FilterContext } from './FilterContext';
 
 function MapMover(p) {
   const map = useMap();
@@ -9,6 +10,7 @@ function MapMover(p) {
 }
 
 export default function MapRenderer({ position, db }) {
+  const { filter, setFilter } = useContext(FilterContext);
   return (
     <MapContainer center={position} zoom={17} style={{ height: '100%' }}>
       <TileLayer

@@ -99,3 +99,13 @@ main {
 {
     height: 1000px;
 }
+
+.checkbox-wrapper
+{
+    display: inline;
+    margin: 5px;
+}
+.right-list h2
+{
+    text-decoration: underline;
+}
