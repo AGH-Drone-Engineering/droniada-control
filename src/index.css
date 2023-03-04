@@ -110,7 +110,8 @@ main {
     text-decoration: underline;
 }
 
-.alles-oder-nichts button {
+.alles-oder-nichts button 
+{
     background: none;
     border: none;
     color: gray;
