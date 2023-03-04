@@ -1,6 +1,8 @@
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import useMapPoints from 'logic/useMapPoints';
+import { useContext } from 'react';
+import { FilterContext } from './FilterContext';
 
 // Define custom marker icon
 const crosshairIcon = L.icon({
@@ -24,21 +26,31 @@ const faultIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
-const icons = [crosshairIcon, faultIcon, qrCodeIcon];
+const hatIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/hat.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon };
+
+function getType(point) {
+  return ('type' in point && point.type in icons) ? point.type : 'generic';
+}
 
 function getIcon(point) {
-  if ('iconid' in point) {
-    return icons[point.iconid];
-  } else {
-    return icons[0];
-  }
+  return icons[getType(point)];
 }
 
 export default function Points({ db }) {
   const points = useMapPoints(db);
+  const { filter } = useContext(FilterContext);
   return (
     <>
-         {points.map((point) => (
+         {points.map((point) => {
+           if (!filter[getType(point)]) { return (<></>); }
+           return (
         <Marker
           key={point.id}
           position={[point.location.latitude, point.location.longitude]}
@@ -50,8 +62,8 @@ export default function Points({ db }) {
               <p>{point.name}</p>
             </div>
           </Popup>
-        </Marker>
-         ))}
+        </Marker>);
+         })}
     </>
   );
 }
