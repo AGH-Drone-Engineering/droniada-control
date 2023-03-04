@@ -3,10 +3,12 @@ import UnorderedPoints from 'components/UnorderedPoints';
 import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
 import React, { useState } from 'react';
-import { FilterContext } from 'components/FilterContext';
+import { FilterContext } from 'logic/FilterContext';
+
+const screenDatabase = 'map-points';
 
 export default function IntruderScreen() {
-  const [position] = useInitalLocation();
+  const [position] = useInitalLocation(screenDatabase);
   const [filter, setFilter] = useState({});
 
   return (
@@ -17,10 +19,10 @@ export default function IntruderScreen() {
       <FilterContext.Provider value={{ filter, setFilter }}>
         <main>
           <div className='map-wrapper'>
-            <MapRenderer position={position} db={'map-points'} />
+            <MapRenderer position={position} db={screenDatabase} />
           </div>
           <div className='right-list'>
-            <UnorderedPoints db={'map-points'} />
+            <UnorderedPoints db={screenDatabase} />
           </div>
         </main>
       </FilterContext.Provider>

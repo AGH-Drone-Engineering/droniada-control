@@ -2,7 +2,7 @@ import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import useMapPoints from 'logic/useMapPoints';
 import { useContext } from 'react';
-import { FilterContext } from './FilterContext';
+import { FilterContext } from 'logic/FilterContext';
 
 // Define custom marker icon
 const crosshairIcon = L.icon({
