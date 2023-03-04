@@ -109,3 +109,12 @@ main {
 {
     text-decoration: underline;
 }
+
+.alles-oder-nichts button {
+    background: none;
+    border: none;
+    color: gray;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: underline;
+  }
