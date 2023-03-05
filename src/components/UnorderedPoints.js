@@ -11,11 +11,7 @@ export default function UnorderedPoints({ db }) {
   useEffect(() => {
     setFilter(
       points.reduce((acc, x) => {
-        if (x.type !== undefined) {
-          acc[x.type] = true;
-        } else {
-          acc.generic = true;
-        }
+        acc[getType(x)] = true;
         return acc;
       }, {})
     );
