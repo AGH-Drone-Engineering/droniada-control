@@ -43,7 +43,7 @@ export default function ModelRenderer() {
     getDownloadURL(ref(storage, '/model.ply'))
       .then((url) => {
         const loader = new PLYLoader();
-        loader.load('https://corsproxy.io/?' + url, (gltf) => {
+        loader.load(url, (gltf) => {
           setGltf(gltf);
           cameraRef.current.lookAt(targetRef.current.position);
         });
