@@ -1,6 +1,7 @@
 import useMapPoints from 'logic/useMapPoints';
 import { FilterContext } from 'logic/FilterContext';
 import { useContext, useEffect, useState } from 'react';
+import { getType } from 'logic/TypeLogic';
 
 export default function UnorderedPoints({ db }) {
   const { filter, setFilter } = useContext(FilterContext);
@@ -10,11 +11,7 @@ export default function UnorderedPoints({ db }) {
   useEffect(() => {
     setFilter(
       points.reduce((acc, x) => {
-        if (x.type !== undefined) {
-          acc[x.type] = true;
-        } else {
-          acc.generic = true;
-        }
+        acc[getType(x)] = true;
         return acc;
       }, {})
     );
@@ -68,14 +65,16 @@ export default function UnorderedPoints({ db }) {
             <hr></hr>
             <h2>Znalezione punkty: </h2>
             <div className='flex'>
-                {points.map((point) => (
+                {points.map((point) => {
+                  if (!filter[getType(point)]) { return <></>; }
+                  return (
                     <div className='flex-item' key={point.name}>
                         <br />
                         <br />
                         <img src={'data:image/jpeg;base64,/9j/' + point.img} alt='Capture from drone'></img>
                         <h3>{point.name}</h3>
-                    </div>
-                ))}
+                    </div>);
+                })}
             </div>
         </>
   );
