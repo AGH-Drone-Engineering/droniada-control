@@ -43,7 +43,7 @@ export default function ModelRenderer() {
     getDownloadURL(ref(storage, '/model.ply'))
       .then((url) => {
         const loader = new PLYLoader();
-        loader.load(url, (gltf) => {
+        loader.load('https://corsproxy.io/?' + url, (gltf) => {
           setGltf(gltf);
           cameraRef.current.lookAt(targetRef.current.position);
         });
@@ -52,6 +52,12 @@ export default function ModelRenderer() {
         setLoadErr(true);
       });
   }, []);
+
+  useEffect(() => {
+    if (cameraRef.current !== undefined && targetRef.current !== undefined) {
+      cameraRef.current.lookAt(targetRef.current.position);
+    }
+  }, [targetRef]);
 
   if (gltf.length === 0) {
     return <h2>Ładowanie modelu 3D...</h2>;
