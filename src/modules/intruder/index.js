@@ -4,12 +4,14 @@ import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
 import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
+import useLotsOfPoints from 'debug/lots-of-points';
 
 const screenDatabase = 'map-points';
 
 export default function IntruderScreen() {
   const [position] = useInitalLocation(screenDatabase);
   const [filter, setFilter] = useState({});
+  useLotsOfPoints();
 
   return (
     <div className='App'>
