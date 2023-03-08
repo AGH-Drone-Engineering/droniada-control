@@ -151,3 +151,54 @@ header > h1
     display: block;
     width: 250px;
 }
+
+.renderer-menu
+{
+    padding: 10px;
+    border-top: 1 solid black;
+    border-bottom: 1 solid black;
+}
+
+.react-tabs {
+    font-size: 1.3rem;
+  }
+  
+  .react-tabs__tab-list {
+    margin-bottom: 0;
+  }
+
+  .react-tabs__tab {
+    display: inline-block;
+    margin: 0 10px -1px 0;
+    border: 3px solid transparent;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-color: #ddd;
+  }
+  
+  .react-tabs__tab--selected {
+    background-color: #f7f7f7;
+    border-color: #ddd;
+    border-bottom: 5px solid transparent;
+    border-bottom-color: transparent;
+    z-index: 10;
+  }
+  
+  .react-tabs__tab:focus {
+    outline: none;
+  }
+  
+  
+  .react-tabs__tab-panel {
+    display: none;
+    padding: 20px;
+    border: 3px solid #ddd;
+    border-radius: 0 5px 5px 5px;
+  }
+  
+  .react-tabs__tab-panel--selected {
+    display: block;
+    overflow: hidden;
+  }
