@@ -22,6 +22,9 @@ export default function LikeSatelliteMap() {
   }
 
   return (
-    <img src={imgUrl}/>
+    <div className='like-satellite'>
+      <img src={imgUrl} />
+    </div>
+
   );
 }

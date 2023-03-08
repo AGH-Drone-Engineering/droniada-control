@@ -15,7 +15,7 @@ export default function PipelineScreen() {
   const handleTabChange = (index) => {
     setTabIndex(index);
   };
-  const screenDatabase = 'pipeline-map';
+  const screenDatabase = 'pipeline-points';
   const [position] = useInitalLocation(screenDatabase);
   const [filter, setFilter] = useState({});
 
@@ -26,9 +26,9 @@ export default function PipelineScreen() {
       <hr></hr>
       <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
         <TabList>
-          <Tab>Model 3D skanu terenu</Tab>
-          <Tab>Obraz mapy z lotu ptaka</Tab>
-          <Tab>Mapa z zaznaczonymi punktami</Tab>
+          <Tab><p>Model 3D skanu terenu</p></Tab>
+          <Tab><p>Obraz mapy z lotu ptaka</p></Tab>
+          <Tab><p>Mapa z zaznaczonymi punktami</p></Tab>
         </TabList>
 
         <TabPanel>
