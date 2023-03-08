@@ -1,7 +1,7 @@
 # Droniada Control Application
 
-Link to Pages:
-<https://agh-drone-engineering.github.io/droniada-control/>
+Link to hosted app:
+<https://droniada-test-2023.web.app>
 
 ## Available Scripts
 
