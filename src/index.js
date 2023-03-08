@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Root from 'modules/root';
 import IntruderScreen from 'modules/intruder';
@@ -9,7 +9,7 @@ import TreeScreen from 'modules/tree';
 
 import './index.css';
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />
