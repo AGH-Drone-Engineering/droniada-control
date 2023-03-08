@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
 import useLotsOfPoints from 'debug/lots-of-points';
 
-const screenDatabase = 'lots-of-points';
+const screenDatabase = 'tree-points';
 
 export default function IntruderScreen() {
   const [position] = useInitalLocation(screenDatabase);

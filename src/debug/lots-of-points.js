@@ -10,11 +10,11 @@ export default function useLotsOfPoints() {
 
 function addPoints() {
   // Define the document ID and number of collections to create
-  const docId = 'lots-of-points';
-  const numCollections = 1000;
+  const docId = 'intruder-points';
+  const numCollections = 10;
 
   // Define an array of possible types for the 'type' field
-  const types = ['hat', 'qr', 'fail', 'generic', 'other-type1', 'other-type2'];
+  const types = ['beige', 'gold', 'brown', 'white'];
 
   // Loop through the desired number of collections
   for (let i = 0; i < numCollections; i++) {

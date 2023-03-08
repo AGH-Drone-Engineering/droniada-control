@@ -2,7 +2,7 @@ import { Marker, Popup } from 'react-leaflet';
 import useMapPoints from 'logic/useMapPoints';
 import { useContext } from 'react';
 import { FilterContext } from 'logic/FilterContext';
-import { getType, getIcon } from 'logic/TypeLogic';
+import { getType, getIcon, nameMap } from 'logic/TypeLogic';
 
 export default function Points({ db }) {
   const points = useMapPoints(db);
@@ -21,6 +21,7 @@ export default function Points({ db }) {
             <div className='marker-popup'>
               <img src={'data:image/jpeg;base64,/9j/' + point.img} className="icon-img" alt='Capture from drone'></img>
               <p>{point.name}</p>
+             
             </div>
           </Popup>
         </Marker>);

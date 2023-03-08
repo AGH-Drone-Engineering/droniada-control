@@ -28,7 +28,51 @@ const hatIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
-const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon };
+const bagIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/bag.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, 0]
+});
+
+const intruderIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/intruder.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, 0]
+});
+
+const brownIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/brown.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const goldIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/gold.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const whiteIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/white.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const beigeIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/beige.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba' };
+
+const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon, bag: bagIcon, bomb: bagIcon, intruder: intruderIcon, brown: brownIcon, gold: goldIcon, beige: beigeIcon, white: whiteIcon };
 
 function getType(point) {
   return ('type' in point && point.type in icons) ? point.type : 'generic';
@@ -38,7 +82,7 @@ function getIcon(point) {
   return icons[getType(point)];
 }
 
-export { getType, getIcon };
+export { getType, getIcon, nameMap };
 
 // For debugging in Chrome dev tools:
 window.getType = getType;

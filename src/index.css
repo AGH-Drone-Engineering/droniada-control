@@ -159,8 +159,15 @@ header > h1
     border-bottom: 1 solid black;
 }
 
-.react-tabs {
+.react-tabs p{
     font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  p
+  {
+    font-size: 1rem;
   }
   
   .react-tabs__tab-list {
@@ -201,4 +208,14 @@ header > h1
   .react-tabs__tab-panel--selected {
     display: block;
     overflow: hidden;
+  }
+
+  label
+  {
+    font-size: 1rem;
+  }
+
+  .like-satellite
+  {
+    overflow: scroll;
   }
