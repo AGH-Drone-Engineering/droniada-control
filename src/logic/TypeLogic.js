@@ -70,9 +70,15 @@ const beigeIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
-const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba' };
+const barrelIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/barrel.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
 
-const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon, bag: bagIcon, bomb: bagIcon, intruder: intruderIcon, brown: brownIcon, gold: goldIcon, beige: beigeIcon, white: whiteIcon };
+const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba', qr: 'QR', generic: 'Inne' };
+const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon, bag: bagIcon, bomb: bagIcon, intruder: intruderIcon, brown: brownIcon, gold: goldIcon, beige: beigeIcon, white: whiteIcon, barrel: barrelIcon };
 
 function getType(point) {
   return ('type' in point && point.type in icons) ? point.type : 'generic';
@@ -82,7 +88,12 @@ function getIcon(point) {
   return icons[getType(point)];
 }
 
-export { getType, getIcon, nameMap };
+function mapType(type) {
+  const out = type in nameMap ? nameMap[type] : type;
+  return out.charAt(0).toUpperCase() + out.slice(1);
+}
+
+export { getType, getIcon, mapType };
 
 // For debugging in Chrome dev tools:
 window.getType = getType;
