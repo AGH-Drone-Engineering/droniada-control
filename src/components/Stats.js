@@ -31,7 +31,7 @@ export default function Stats({ db }) {
       )}
       <h2>Suma: {Object.values(pointCount).reduce((a, x) => {
         return a + x;
-      })}</h2>
+      }, 0)}</h2>
     </div>
   );
 }
