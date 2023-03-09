@@ -6,6 +6,7 @@ import Root from 'modules/root';
 import IntruderScreen from 'modules/intruder';
 import PipelineScreen from 'modules/pipeline';
 import TreeScreen from 'modules/tree';
+import AdminScreen from 'modules/admin';
 
 import './index.css';
 
@@ -25,6 +26,10 @@ const router = createHashRouter([
   {
     path: '/tree',
     element: <TreeScreen />
+  },
+  {
+    path: '/admin',
+    element: <AdminScreen />
   }
 ]);
 
