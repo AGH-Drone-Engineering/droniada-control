@@ -8,6 +8,9 @@ import UnorderedPoints from 'components/UnorderedPoints';
 import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
 import { FilterContext } from 'logic/FilterContext';
+import Stats from 'components/Stats';
+
+const screenDatabase = 'pipeline-points';
 
 export default function PipelineScreen() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -15,7 +18,7 @@ export default function PipelineScreen() {
   const handleTabChange = (index) => {
     setTabIndex(index);
   };
-  const screenDatabase = 'pipeline-points';
+
   const [position] = useInitalLocation(screenDatabase);
   const [filter, setFilter] = useState({});
 
@@ -23,7 +26,9 @@ export default function PipelineScreen() {
     <div className='App'>
 
       <Header appName='Rurociąg' />
-      <hr></hr>
+      <hr/>
+      <Stats db={screenDatabase}/>
+      <hr/>
       <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
         <TabList>
           <Tab><p>Model 3D skanu terenu</p></Tab>

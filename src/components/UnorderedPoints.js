@@ -1,7 +1,7 @@
 import useMapPoints from 'logic/useMapPoints';
 import { FilterContext } from 'logic/FilterContext';
 import { useContext, useEffect, useState } from 'react';
-import { getType, nameMap } from 'logic/TypeLogic';
+import { getType, mapType } from 'logic/TypeLogic';
 
 export default function UnorderedPoints({ db }) {
   const { filter, setFilter } = useContext(FilterContext);
@@ -47,7 +47,7 @@ export default function UnorderedPoints({ db }) {
     setCheckboxes(Object.keys(filter).map(key => (
             <div key={key} className='checkbox-wrapper'>
                 <input type="checkbox" value={key} checked={filter[key]} onChange={handleCheckboxChange} />
-                <label>{key in nameMap ? nameMap[key] : key}</label>
+                <label>{mapType(key)}</label>
             </div>
     )));
   }, [filter]);
