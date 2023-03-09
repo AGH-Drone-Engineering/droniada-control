@@ -29,7 +29,9 @@ export default function Stats({ db }) {
             <img src={imgs[x]} className='mini-icon'/> <p>{ mapType(x).charAt(0).toUpperCase() + mapType(x).slice(1)}: {pointCount[x]}</p>
          </div>
       )}
-      <h2>Suma: {Object.keys(pointCount).length}</h2>
+      <h2>Suma: {Object.values(pointCount).reduce((a, x) => {
+        return a + x;
+      })}</h2>
     </div>
   );
 }
