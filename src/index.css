@@ -116,7 +116,7 @@ main {
     border: none;
     color: gray;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 10px;
     text-decoration: underline;
 }
 
@@ -136,7 +136,7 @@ main {
 {
     width: 200px;
     height: 50px;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     border: 2px white solid;
     background-color: darkcyan;
@@ -160,7 +160,7 @@ header > h1
 }
 
 .react-tabs p{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-top: 0;
     margin-bottom: 0;
   }

@@ -45,19 +45,12 @@ export default function ModelRenderer() {
         const loader = new PLYLoader();
         loader.load(url, (gltf) => {
           setGltf(gltf);
-          cameraRef.current.lookAt(targetRef.current.position);
         });
       })
       .catch(() => {
         setLoadErr(true);
       });
   }, []);
-
-  useEffect(() => {
-    if (cameraRef.current !== undefined && targetRef.current !== undefined) {
-      cameraRef.current.lookAt(targetRef.current.position);
-    }
-  }, [targetRef]);
 
   if (gltf.length === 0) {
     return <h2>Ładowanie modelu 3D...</h2>;
