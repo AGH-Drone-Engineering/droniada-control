@@ -1,5 +1,6 @@
 import L from 'leaflet';
 
+// Domyślna (generic)
 const crosshairIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/crosshair.png',
   iconSize: [20, 20],
@@ -7,6 +8,7 @@ const crosshairIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+// Rurociąg
 const qrCodeIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/qrcode.png',
   iconSize: [20, 20],
@@ -28,6 +30,14 @@ const hatIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+const barrelIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/barrel.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+// Intruz:
 const bagIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/bag.png',
   iconSize: [32, 32],
@@ -42,6 +52,7 @@ const intruderIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+// Drzewo życia:
 const brownIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/brown.png',
   iconSize: [20, 20],
@@ -70,14 +81,7 @@ const beigeIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
-const barrelIcon = L.icon({
-  iconUrl: process.env.PUBLIC_URL + '/barrel.png',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
-  popupAnchor: [0, 0]
-});
-
-const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba', qr: 'QR', generic: 'Inne' };
+const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba z ładunkiem', qr: 'QR', generic: 'Inne' };
 const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon, bag: bagIcon, bomb: bagIcon, intruder: intruderIcon, brown: brownIcon, gold: goldIcon, beige: beigeIcon, white: whiteIcon, barrel: barrelIcon };
 
 function getType(point) {
