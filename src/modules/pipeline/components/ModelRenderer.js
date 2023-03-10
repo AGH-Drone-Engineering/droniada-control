@@ -86,7 +86,7 @@ export default function ModelRenderer() {
         <pointLight position={[-10, -10, -10]} />
         <mesh ref={targetRef} scale={[1, 1, 1]} rotation={[-89.5, -0.01, 0]}>
           <primitive object={gltf} />
-          <meshStandardMaterial color={'#AABBCC'} metalness={0.2} />
+          <meshStandardMaterial color={'#AABBCC'} metalness={0.2} vertexColors={true}/>
         </mesh>
         <OrbitControls
           camera={cameraRef.current}
