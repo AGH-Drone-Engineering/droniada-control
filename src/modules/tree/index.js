@@ -17,9 +17,7 @@ export default function IntruderScreen() {
   return (
     <div className='App'>
       <Header appName='Drzewo życia' />
-      <hr/>
       <Stats db={screenDatabase}/>
-      <hr/>
       <FilterContext.Provider value={{ filter, setFilter }}>
         <main>
           <div className='map-wrapper'>

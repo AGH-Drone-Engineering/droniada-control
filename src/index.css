@@ -41,8 +41,9 @@ header img {
 }
 
 .map-wrapper {
-    height: 800px;
+    /*height: 100vh;*/
     width: 75%;
+    flex: 1;
 }
 
 main {
@@ -50,6 +51,7 @@ main {
     justify-content: space-between;
     width: 100%;
     align-items: stretch;
+    flex: 1;
 }
 
 .right-list {
@@ -92,7 +94,7 @@ main {
 
 .empty
 {
-    width: 250px;
+    width: 265px;
 }
 
 .canvas
@@ -150,6 +152,8 @@ header > h1
 {
     display: block;
     width: 250px;
+    text-align: left;
+    padding-left: 15px;
 }
 
 .renderer-menu
@@ -223,7 +227,7 @@ header > h1
   .stat-element
   {
     display: inline-block;  
-    margin: 5px 20px 5px 20px;  
+    margin: 10px 20px 5px 20px;  
   }
 
   .stat-element p
@@ -235,6 +239,7 @@ header > h1
   {
     display: flex;
     justify-content: space-between;
+    text-align: center;
   }
 
   .mini-icon
@@ -242,3 +247,24 @@ header > h1
     width: 32px;
     height: 32px;
   }
+
+.App 
+{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body, .root
+{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+hr
+{
+  display: block;
+  width: 100%;
+  height: 2px;
+  border: 1px gray solid;
+}

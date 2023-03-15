@@ -23,15 +23,20 @@ export default function Stats({ db }) {
   }, [points]);
 
   return (
+    <>
+    <hr></hr>
     <div className='statter'>
       {Object.keys(pointCount).map((x) =>
          <div className='stat-element' key={x}>
             <img src={imgs[x]} className='mini-icon'/> <p>{ mapType(x)}: {pointCount[x]}</p>
          </div>
       )}
+      <div className='stat-element summer'>
       <h2>Suma: {Object.values(pointCount).reduce((a, x) => {
         return a + x;
-      }, 0)}</h2>
+      }, 0)}</h2></div>
     </div>
+    <hr></hr>
+    </>
   );
 }

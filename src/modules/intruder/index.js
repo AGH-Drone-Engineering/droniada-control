@@ -16,8 +16,6 @@ export default function IntruderScreen() {
   return (
     <div className='App'>
       <Header appName='Intruz' />
-      <hr></hr>
-
       <FilterContext.Provider value={{ filter, setFilter }}>
         <main>
           <div className='map-wrapper'>
