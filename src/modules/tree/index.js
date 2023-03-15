@@ -5,6 +5,7 @@ import useInitalLocation from 'logic/useInitalLocation';
 import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
 import useLotsOfPoints from 'debug/lots-of-points';
+import Stats from 'components/Stats';
 
 const screenDatabase = 'tree-points';
 
@@ -16,8 +17,9 @@ export default function IntruderScreen() {
   return (
     <div className='App'>
       <Header appName='Drzewo życia' />
-      <hr></hr>
-
+      <hr/>
+      <Stats db={screenDatabase}/>
+      <hr/>
       <FilterContext.Provider value={{ filter, setFilter }}>
         <main>
           <div className='map-wrapper'>

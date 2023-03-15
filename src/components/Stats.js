@@ -26,7 +26,7 @@ export default function Stats({ db }) {
     <div className='statter'>
       {Object.keys(pointCount).map((x) =>
          <div className='stat-element' key={x}>
-            <img src={imgs[x]} className='mini-icon'/> <p>{ mapType(x).charAt(0).toUpperCase() + mapType(x).slice(1)}: {pointCount[x]}</p>
+            <img src={imgs[x]} className='mini-icon'/> <p>{ mapType(x)}: {pointCount[x]}</p>
          </div>
       )}
       <h2>Suma: {Object.values(pointCount).reduce((a, x) => {
