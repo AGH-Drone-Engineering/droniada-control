@@ -1,4 +1,9 @@
+import { useEffect } from 'react';
+import setupCSS from 'components/css-with-js';
 export default function Header({ appName }) {
+  useEffect(() => {
+    setupCSS();
+  });
   return (
     <header>
       <h1>{appName}</h1>

@@ -24,9 +24,10 @@ export default function PipelineScreen() {
 
   return (
     <div className='App'>
-
-      <Header appName='Rurociąg' />
-      <Stats db={screenDatabase}/>
+      <div id='header'>
+        <Header appName='Rurociąg' />
+        <Stats db={screenDatabase} />
+      </div>
       <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
         <TabList>
           <Tab><p>Model 3D skanu terenu</p></Tab>
