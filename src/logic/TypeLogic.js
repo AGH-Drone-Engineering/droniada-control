@@ -1,5 +1,6 @@
 import L from 'leaflet';
 
+// Generic:
 const crosshairIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/crosshair.png',
   iconSize: [20, 20],
@@ -7,6 +8,7 @@ const crosshairIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+// Pipeline:
 const qrCodeIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/qrcode.png',
   iconSize: [20, 20],
@@ -28,6 +30,14 @@ const hatIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+const barrelIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/barrel.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+// Intruder:
 const bagIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/bag.png',
   iconSize: [32, 32],
@@ -42,6 +52,7 @@ const intruderIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+// Tree of life
 const brownIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/brown.png',
   iconSize: [20, 20],
@@ -65,13 +76,6 @@ const whiteIcon = L.icon({
 
 const beigeIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/beige.png',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
-  popupAnchor: [0, 0]
-});
-
-const barrelIcon = L.icon({
-  iconUrl: process.env.PUBLIC_URL + '/barrel.png',
   iconSize: [20, 20],
   iconAnchor: [10, 10],
   popupAnchor: [0, 0]
