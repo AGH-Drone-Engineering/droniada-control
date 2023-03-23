@@ -18,6 +18,22 @@ header {
   align-items: center;
 }
 
+@media screen and (max-width: 650px) {
+  .head1 h1 
+  {
+    display: none;
+  }
+  .head1 
+  {
+    width: 64px;
+  }
+  header h1
+  {
+    width: auto !important;
+    flex: 0 !important;
+  }
+}
+
 .links {
   flex: 0 0 auto;
   padding-top: auto;
