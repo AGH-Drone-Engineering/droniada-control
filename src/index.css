@@ -3,7 +3,10 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
+  background-color: #111;
+  color: white;
 }
+
 
 header {
   display: flex;
@@ -45,7 +48,7 @@ header {
 .links a {
   padding: 15px;
   font-size: 20px;
-  color: black
+  color: white;
 }
 
 .head1 img {
@@ -211,16 +214,16 @@ p {
 .react-tabs__tab {
   display: inline-block;
   margin: 0 10px -1px 0;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   border-radius: 5px 5px 0 0;
   padding: 10px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #222;
   border-color: #ddd;
 }
 
 .react-tabs__tab--selected {
-  background-color: #f7f7f7;
+  background-color: #111;
   border-color: #ddd;
   border-bottom: 5px solid transparent;
   border-bottom-color: transparent;
