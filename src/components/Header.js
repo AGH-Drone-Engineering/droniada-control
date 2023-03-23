@@ -10,7 +10,7 @@ export default function Header({ appName }) {
     setupCSS();
   }, []);
   useEffect(() => {
-    if (!('altitude' in droneInfo) || droneInfo.altitude < 0.5 ||
+    if (!('altitude' in droneInfo) || droneInfo.altitude < 0.3 ||
       ('status' in droneInfo && droneInfo.status === 'grounded')
     ) {
       setDroneStatus('grounded');

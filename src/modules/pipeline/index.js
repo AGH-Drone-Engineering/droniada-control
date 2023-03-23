@@ -1,7 +1,7 @@
 
 import Header from 'components/Header';
 import ModelRenderer from './components/ModelRenderer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import LikeSatelliteMap from './components/LikeSatelliteMap';
 import UnorderedPoints from 'components/UnorderedPoints';
@@ -9,6 +9,7 @@ import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
 import { FilterContext } from 'logic/FilterContext';
 import Stats from 'components/Stats';
+import setupCSS from 'components/css-with-js';
 
 const screenDatabase = 'pipeline-points';
 
@@ -18,6 +19,10 @@ export default function PipelineScreen() {
   const handleTabChange = (index) => {
     setTabIndex(index);
   };
+
+  useEffect(() => {
+    setupCSS();
+  }, [tabIndex]);
 
   const [position] = useInitalLocation(screenDatabase);
   const [filter, setFilter] = useState({});

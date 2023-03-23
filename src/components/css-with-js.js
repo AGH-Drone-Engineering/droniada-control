@@ -3,7 +3,12 @@ export default function setupCSS() {
   const header = document.getElementById('header');
   const tabs = document.getElementsByClassName('react-tabs__tab-list');
 
-  if (container === undefined || container.length <= 0 || header === undefined) { return; }
+  if (container.length <= 0) {
+    container = document.getElementsByClassName('like-satellite');
+    console.log('satelite');
+  }
+
+  if (container.length <= 0 || header === undefined) { return; }
 
   const tabSize = tabs[0] !== undefined ? tabs[0].clientHeight + 35 : 0;
   container = container[0];
