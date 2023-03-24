@@ -7,6 +7,7 @@ import IntruderScreen from 'modules/intruder';
 import PipelineScreen from 'modules/pipeline';
 import TreeScreen from 'modules/tree';
 import AdminScreen from 'modules/admin';
+import DemoScreen from 'modules/demo';
 
 import './index.css';
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/admin',
     element: <AdminScreen />
+  },
+  {
+    path: '/demo',
+    element: <DemoScreen />
   }
 ]);
 
