@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import Points from 'components/Points';
+import Shapes from 'components/Shapes';
 
 function MapMover(p) {
   const map = useMap();
@@ -17,6 +18,7 @@ export default function MapRenderer({ position, db }) {
       />
       <Points db={db}></Points>
       <MapMover position={position}></MapMover>
+      <Shapes dbName={db}></Shapes>
     </MapContainer>
   );
 }

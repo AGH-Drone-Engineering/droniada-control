@@ -27,7 +27,7 @@ export default function Points({ db }) {
               icon={getIcon(point)}
               zIndexOffset={-10}
             >
-              <Popup>
+              <Popup key={point.id}>
                 <div className='marker-popup'>
                   <img src={'data:image/jpeg;base64,/9j/' + point.img} className="icon-img" alt='Capture from drone'></img>
                   <p>{point.name}</p>

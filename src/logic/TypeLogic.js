@@ -37,6 +37,27 @@ const barrelIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+const pipelineErrorIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/pipeline.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const cuttedWireIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/wire.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
+const helmetOffIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/helmetoff.png',
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, 0]
+});
+
 // Intruder:
 const bagIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/bag.png',
@@ -82,7 +103,23 @@ const beigeIcon = L.icon({
 });
 
 const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba', qr: 'QR', generic: 'Inne' };
-const icons = { generic: crosshairIcon, fail: faultIcon, qr: qrCodeIcon, hat: hatIcon, bag: bagIcon, bomb: bagIcon, intruder: intruderIcon, brown: brownIcon, gold: goldIcon, beige: beigeIcon, white: whiteIcon, barrel: barrelIcon };
+const icons = {
+  generic: crosshairIcon,
+  fail: faultIcon,
+  qr: qrCodeIcon,
+  hat: hatIcon,
+  barrel: barrelIcon,
+  helmetOff: helmetOffIcon,
+  cuttedWire: cuttedWireIcon,
+  pipelineError: pipelineErrorIcon,
+  bag: bagIcon,
+  bomb: bagIcon,
+  intruder: intruderIcon,
+  brown: brownIcon,
+  gold: goldIcon,
+  beige: beigeIcon,
+  white: whiteIcon
+};
 
 function getType(point) {
   return ('type' in point && point.type in icons) ? point.type : 'generic';

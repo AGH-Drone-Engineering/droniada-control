@@ -39,7 +39,7 @@ export default function Header({ appName }) {
           : (
           <>
 
-          <img src={process.env.PUBLIC_URL + '/drone.png'} alt='drone-icon' />
+          <img src={process.env.PUBLIC_URL + '/drone-clouds.png'} alt='drone-icon' />
             <div><p>{droneInfo.speed} m/s {droneInfo.position._lat}°N <br/> </p><p> {droneInfo.altitude} m {droneInfo.position._long}°E <br/></p><p>{droneInfo.status}</p></div>
             </>)}
       </div>
