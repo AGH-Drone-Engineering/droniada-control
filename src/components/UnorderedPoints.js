@@ -68,7 +68,7 @@ export default function UnorderedPoints({ db }) {
                 {points.map((point) => {
                   if (!filter[getType(point)]) { return <></>; }
                   return (
-                    <div className='flex-item' key={point.name}>
+                    <div className='flex-item' key={point.id}>
                         <br />
                         <br />
                         <img src={'data:image/jpeg;base64,/9j/' + point.img} alt='Capture from drone'></img>

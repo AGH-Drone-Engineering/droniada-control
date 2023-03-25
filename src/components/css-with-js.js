@@ -5,13 +5,11 @@ export default function setupCSS() {
 
   if (container.length <= 0) {
     container = document.getElementsByClassName('like-satellite');
-    console.log('satelite');
   }
 
   if (container.length <= 0 || header === undefined) { return; }
 
   const tabSize = tabs[0] !== undefined ? tabs[0].clientHeight + 35 : 0;
   container = container[0];
-  console.log(header);
   container.style.setProperty('--header-height', `${header.clientHeight + tabSize}px`);
 }
