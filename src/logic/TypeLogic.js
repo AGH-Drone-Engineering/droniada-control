@@ -32,29 +32,29 @@ const hatIcon = L.icon({
 
 const barrelIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/barrel.png',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
+  iconSize: [26, 26],
+  iconAnchor: [13, 13],
   popupAnchor: [0, 0]
 });
 
-const pipelineErrorIcon = L.icon({
-  iconUrl: process.env.PUBLIC_URL + '/pipeline.png',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
+const pipelineLeakIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/broken-pipe.png',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
   popupAnchor: [0, 0]
 });
 
 const cuttedWireIcon = L.icon({
   iconUrl: process.env.PUBLIC_URL + '/wire.png',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
   popupAnchor: [0, 0]
 });
 
 const helmetOffIcon = L.icon({
-  iconUrl: process.env.PUBLIC_URL + '/helmetoff.png',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
+  iconUrl: process.env.PUBLIC_URL + '/no-helmet.png',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
   popupAnchor: [0, 0]
 });
 
@@ -102,7 +102,19 @@ const beigeIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
-const nameMap = { white: 'zdrowe', brown: 'podatne', gold: 'parch', beige: 'mączniak', bag: 'torba', qr: 'QR', generic: 'Inne' };
+const nameMap = {
+  white: 'zdrowe',
+  brown: 'podatne',
+  gold: 'parch',
+  beige: 'mączniak',
+  bag: 'torba',
+  qr: 'QR',
+  generic: 'Inne',
+  cuttedWire: 'Przecięty kabel',
+  pipelineLeak: 'Awaria rury',
+  helmetOff: 'Zdjęty kask',
+  barrel: 'Beczka'
+};
 const icons = {
   generic: crosshairIcon,
   fail: faultIcon,
@@ -111,7 +123,7 @@ const icons = {
   barrel: barrelIcon,
   helmetOff: helmetOffIcon,
   cuttedWire: cuttedWireIcon,
-  pipelineError: pipelineErrorIcon,
+  pipelineLeak: pipelineLeakIcon,
   bag: bagIcon,
   bomb: bagIcon,
   intruder: intruderIcon,
