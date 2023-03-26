@@ -40,7 +40,7 @@ export default function NukeControl() {
             <button className='no-fix-infrastructure' onClick={noFixInfrastructure}> Wszystko jest sprawne -  Brygada <b>nie</b> wchodzi</button>
           </>
           : <>
-            <p>Po zbadaniu infrastruktury podjęto decyzję że {teamState === 'yes' ? <>należy naprwić infrastrukturę</> : <>nie potrzeba niczego naprwiać</>}</p>
+            <p>Po zbadaniu infrastruktury podjęto decyzję że {teamState === 'yes' ? <>należy naprwić infrastrukturę</> : <>nie potrzeba niczego naprawiać</>}</p>
             <button className='unset-decision' onClick={unsetInfrastructure}> Usuń swoją decyzję</button><br />
           </>}
 

@@ -381,3 +381,21 @@ h1 {
 .xx {
   margin-top: 10px;
 }
+
+.system-demo iframe
+{
+  width: 100%;
+  height: calc(100vh - 100px);
+  border: 0;
+}
+
+.system-demo h1
+{
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.system-demo
+{
+  text-align: center;
+}
