@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignOut, useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from 'logic/fb';
 import { useUserIsAdmin } from 'logic/auth';
+import NukeControl from 'components/NukeControl';
 
 function CurrentUser() {
   const [user, userLoading, userError] = useAuthState(auth);
@@ -100,7 +101,12 @@ export default function AdminScreen() {
           : <SignIn />
       )}
       {isAdminLoading && <p>Loading admin status...</p>}
-      {isAdmin && <p>You&apos;re an admin, Harry!</p>}
+      {isAdmin &&
+        <>
+          <p>You&apos;re an admin, Harry! </p>
+          <NukeControl/>
+        </>
+      }
     </>
   );
 }

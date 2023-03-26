@@ -10,6 +10,7 @@ import useInitalLocation from 'logic/useInitalLocation';
 import { FilterContext } from 'logic/FilterContext';
 import Stats from 'components/Stats';
 import setupCSS from 'components/css-with-js';
+import useFixTeam from 'logic/useFixTeam';
 
 const screenDatabase = 'pipeline-points';
 
@@ -26,6 +27,17 @@ export default function PipelineScreen() {
 
   const [position] = useInitalLocation(screenDatabase);
   const [filter, setFilter] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOkClick = () => {
+    setIsOpen(false);
+  };
+
+  const [fixState] = useFixTeam();
+
+  useEffect(() => {
+    setIsOpen(fixState === 'yes' || fixState === 'no');
+  }, [fixState]);
 
   return (
     <div className='App'>
@@ -33,6 +45,20 @@ export default function PipelineScreen() {
         <Header appName='Rurociąg' />
         <Stats db={screenDatabase} />
       </div>
+      <div>
+      {isOpen && (
+        <div className="popup">
+          <div className="popup-content">
+            <span className="close" onClick={handleOkClick}>
+              &times;
+            </span>
+            <p>Po wnikliwej analizie infrastruktury krytycznej, nasz zespół doszedł do wniosku, że
+              {fixState === 'yes' ? <> należy poprosić ekipę remontową o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, infrastruktura jest sprawna.</>}</p>
+            <button className='xx' onClick={handleOkClick}>OK</button>
+          </div>
+        </div>
+      )}
+    </div>
       <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
         <TabList>
           <Tab><p>Model 3D skanu terenu</p></Tab>

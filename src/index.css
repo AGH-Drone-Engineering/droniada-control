@@ -294,3 +294,90 @@ hr {
 h1 {
   margin-left: 20px;
 }
+.nuke-control div
+{
+  margin-left: 25px;
+  margin-top: 15px;
+  border: 1px gray dashed;
+  padding: 20px;
+}
+
+.nuke-control button
+{
+  height: 30px;
+  width: 500px;
+  text-align: center;
+  margin-top: 10px;
+  border: 0;
+  background-color: #991111;
+  cursor: pointer;
+}
+
+.nuke-control .no-fix-infrastructure:hover
+{
+  background-color: #117711;
+}
+
+.nuke-control .no-fix-infrastructure
+{
+  background-color: #119911;
+}
+
+.nuke-control .fix-infrastructure
+{
+  background-color: #991111;
+}
+
+.nuke-control .fix-infrastructure:hover
+{
+  background-color: #771111;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  max-width: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  color: black;
+  text-align: justify;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup-content button
+{
+  margin-left: 165px;
+  width: 70px;
+  height: 30px;
+  border: 0;
+  background-color: #119911;
+  cursor: pointer;
+}
+
+.xx {
+  margin-top: 10px;
+}
