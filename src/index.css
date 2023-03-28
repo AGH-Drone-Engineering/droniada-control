@@ -186,6 +186,13 @@ header>h1 {
   width: 30%;
 }
 
+.marker-popup a
+{
+  cursor: pointer;
+  text-decoration: underline;
+  color: red;
+}
+
 .renderer-menu {
   padding: 10px;
   border-top: 1 solid black;
@@ -541,7 +548,7 @@ select {
   text-align: center;
 }
 
-input[type="datetime-local"] {
+.mannual-controls .mannual-controls input[type="datetime-local"] {
   padding: 0;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -557,41 +564,41 @@ label.checkbox-label {
   margin-bottom: 0.25rem;
 }
 
-input[type="checkbox"] {
+.mannual-controls input[type="checkbox"] {
   margin-right: 0.5rem;
   width: 20px;
   height: 20px;
   outline: 3px solid black;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit {
   padding: 0.5rem;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
   display: flex;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-year-field {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-year-field {
   flex: 1;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-month-field {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-month-field {
   flex: 1;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-day-field {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-day-field {
   flex: 1;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-hour-field {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-hour-field {
   flex: 1;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
   flex: 1;
 }
 
-input[type="datetime-local"]::-webkit-datetime-edit-ampm-field {
+.mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-ampm-field {
   display: none;
 }
