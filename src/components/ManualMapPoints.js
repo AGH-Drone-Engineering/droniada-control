@@ -4,7 +4,7 @@ import Shapes from 'components/Shapes';
 import Points from 'components/Points';
 import useInitalLocation from 'logic/useInitalLocation';
 import { icons, mapType } from 'logic/TypeLogic';
-import addPointToMap from 'logic/FbPointLogic';
+import { addPointToMap } from 'logic/FbPointLogic';
 
 function toIsoString(date) {
   const pad = function(num) {
@@ -126,7 +126,7 @@ export default function ManualMapPoints() {
         </div>
         <label className="checkbox-label">
           <input type="checkbox" onChange={onCheckedAutoTime} />
-          Ustawienie automatycznego czasu
+          Automatyczne ustawienie czasu
         </label>
 
         <div className="form-group">

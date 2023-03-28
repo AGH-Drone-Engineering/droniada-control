@@ -3,10 +3,18 @@ import useMapPoints from 'logic/useMapPoints';
 import { useContext } from 'react';
 import { FilterContext } from 'logic/FilterContext';
 import { getType, getIcon } from 'logic/TypeLogic';
+import { removePointFromMap } from 'logic/FbPointLogic';
+import { useUserIsAdmin } from 'logic/auth';
 
 export default function Points({ db }) {
   const points = useMapPoints(db);
   const { filter } = useContext(FilterContext);
+  const [admin] = useUserIsAdmin();
+
+  const handleRemoveMarker = (point) => {
+    removePointFromMap(db, point.id);
+  };
+
   return (
     <>
       {points.map((point) => {
@@ -32,6 +40,8 @@ export default function Points({ db }) {
                   <img src={'data:image/jpeg;base64,/9j/' + point.img} className="icon-img" alt='Capture from drone'></img>
                   <p>{point.name}</p>
                   <p> {date} <br/> {time} </p>
+                  {admin &&
+                  <a onClick={() => handleRemoveMarker(point)}>Usuń punkt</a> }
                 </div>
               </Popup>
             </Marker>

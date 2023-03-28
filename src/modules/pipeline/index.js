@@ -61,7 +61,7 @@ export default function PipelineScreen() {
     </div>
       <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
         <TabList>
-          <Tab><p>Model 3D skanu terenu</p></Tab>
+          <Tab><p>Model 3D skanu terenu </p></Tab>
           <Tab><p>Obraz mapy z lotu ptaka</p></Tab>
           <Tab><p>Mapa z zaznaczonymi punktami</p></Tab>
         </TabList>
