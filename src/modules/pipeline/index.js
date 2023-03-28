@@ -53,7 +53,7 @@ export default function PipelineScreen() {
               &times;
             </span>
             <p>Po wnikliwej analizie infrastruktury krytycznej, nasz zespół doszedł do wniosku, że
-              {fixState === 'yes' ? <> należy poprosić ekipę remontową o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, infrastruktura jest sprawna.</>}</p>
+              {fixState === 'yes' ? <> należy <b>poprosić ekipę remontową</b> o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, <b>infrastruktura jest sprawna.</b></>}</p>
             <button className='xx' onClick={handleOkClick}>OK</button>
           </div>
         </div>

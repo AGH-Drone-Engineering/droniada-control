@@ -146,7 +146,7 @@ function mapType(type) {
   return out.charAt(0).toUpperCase() + out.slice(1);
 }
 
-export { getType, getIcon, mapType };
+export { getType, getIcon, mapType, nameMap, icons };
 
 // For debugging in Chrome dev tools:
 window.getType = getType;

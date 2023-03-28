@@ -10,7 +10,7 @@ export default function Points({ db }) {
   return (
     <>
       {points.map((point) => {
-        if (!filter[getType(point)]) { return (<></>); }
+        if (filter !== undefined && !filter[getType(point)]) { return (<></>); }
         const shooted = 'shooted' in point && point.shooted;
         const rawDate = 'timestamp' in point ? point.timestamp.toDate() : undefined;
         let date = '';
