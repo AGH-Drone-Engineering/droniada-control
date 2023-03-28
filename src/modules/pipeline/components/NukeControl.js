@@ -2,6 +2,7 @@ import React from 'react';
 import { db } from 'logic/fb';
 import { doc, updateDoc } from 'firebase/firestore';
 import useFixTeam from 'logic/useFixTeam';
+import ManualMapPoints from 'components/ManualMapPoints';
 
 export default function NukeControl() {
   const [teamState, collectionId] = useFixTeam();
@@ -46,6 +47,7 @@ export default function NukeControl() {
 
         <br /><br />
         <p>W tym miejscu możesz też dodać ręcznie punkty do bazy</p>
+        <ManualMapPoints/>
       </div>
     </div >
   );

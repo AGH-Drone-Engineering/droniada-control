@@ -294,12 +294,14 @@ hr {
 h1 {
   margin-left: 20px;
 }
-.nuke-control div
+.nuke-control > div
 {
-  margin-left: 25px;
+  margin-left: 1px;
   margin-top: 15px;
   border: 1px gray dashed;
-  padding: 20px;
+  padding: 50px;
+  overflow: scroll;
+  height: 800px;
 }
 
 .nuke-control button
@@ -311,6 +313,7 @@ h1 {
   border: 0;
   background-color: #991111;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .nuke-control .no-fix-infrastructure:hover
@@ -398,4 +401,197 @@ h1 {
 .system-demo
 {
   text-align: center;
+}
+
+.admin-header
+{
+  border: 0;
+  margin-left: 20px;
+}
+
+.admin-header
+{
+ font-size: 20px;
+}
+
+.admin-header button
+{
+  margin-left: 20px;
+}
+
+.login-form
+{
+  margin-left: 20px;
+  text-align: center;
+}
+
+.login-form input
+{
+  width: 300px;
+  height: 20px;
+  background-color: #555;
+  border: 1;
+  border-style: solid;
+  color: white;
+}
+
+.login-form button
+{
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+  border: 0;
+  background-color: #555;
+  color: #111;
+}
+
+.mannual-wrapper
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.mannual-mapper
+{
+  height: 600px;
+  margin-right: 0;
+  min-width: 55%;
+  flex-basis: 55%;
+}
+
+.mannual-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 40%;
+  flex-basis: 40%;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1050px) {
+  .mannual-mapper, .mannual-controls {
+    min-width: 100%;
+    flex-basis: 100%;
+  }
+}
+.form-row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+
+input[type="text"], select, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+
+select {
+  background-color: white;
+}
+
+.mannual-controls button, .admin-header button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mannual-controls button
+{
+  margin-top:30px;
+  height: 40px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.mannual-controls button:hover, .admin-header button:hover {
+  background-color: #0062cc;
+}
+
+.mannual-controls h2
+{
+  text-align: center;
+}
+
+input[type="datetime-local"] {
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+
+label.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
+  outline: 3px solid black;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit {
+  padding: 0.5rem;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-year-field {
+  flex: 1;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-month-field {
+  flex: 1;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-day-field {
+  flex: 1;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-hour-field {
+  flex: 1;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
+  flex: 1;
+}
+
+input[type="datetime-local"]::-webkit-datetime-edit-ampm-field {
+  display: none;
 }

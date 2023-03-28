@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignOut, useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from 'logic/fb';
 import { useUserIsAdmin } from 'logic/auth';
-import NukeControl from 'components/NukeControl';
+import NukeControl from 'modules/pipeline/components/NukeControl';
 
 function CurrentUser() {
   const [user, userLoading, userError] = useAuthState(auth);
@@ -26,12 +26,12 @@ function CurrentUser() {
 
   if (user) {
     return (
-      <>
-        <p>Signed in as {user.email}</p>
+      <div className='admin-header'>
+        Signed in as {user.email}
         <button type="button" onClick={signOut}>
           Sign Out
         </button>
-      </>
+      </div>
     );
   }
 
@@ -57,32 +57,34 @@ function SignIn() {
   }
 
   return (
-    <>
-      <h2>Sign In</h2>
+    <div className='login-form'>
+      <h2>Logowanie do panelu</h2>
       <form
         onSubmit={e => {
           e.preventDefault();
           signInWithEmailAndPassword(email, password);
         }}
       >
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email: <br/></label>
         <input
           type="email"
           id="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+        <br/>
+        <label htmlFor="password">Hasło: <br/></label>
         <input
           type="password"
           id="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button type="submit">Sign In</button>
+        <br/><br/>
+        <button type="submit">Zaloguj się</button>
       </form>
       {error && <p>Error signing in: {error.message}</p>}
-    </>
+    </div>
   );
 };
 
@@ -92,7 +94,7 @@ export default function AdminScreen() {
 
   return (
     <>
-      <h1>Super Secret Admin Control Panel</h1>
+      {user ? <h1>Super Secret {isAdmin && <>Admin</> } Control Panel</h1> : <h1>Very normal login form to very normal panel</h1> }
       {loading && <p>Loading user...</p>}
       {error && <p>Error loading user: {error.message}</p>}
       {!loading && !error && (
@@ -103,7 +105,6 @@ export default function AdminScreen() {
       {isAdminLoading && <p>Loading admin status...</p>}
       {isAdmin &&
         <>
-          <p>You&apos;re an admin, Harry! </p>
           <NukeControl/>
         </>
       }
