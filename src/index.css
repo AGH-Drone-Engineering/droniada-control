@@ -66,6 +66,13 @@ header {
   flex: 7;
 }
 
+.leaflet-tooltip
+{
+  height: 10px;
+  padding: 3px;
+  font-size: 0.8em;
+}
+
 main {
   display: flex;
   flex-direction: row;

@@ -108,7 +108,7 @@ export default function ManualMapPoints() {
           </div>
         </div>
         <label htmlFor="pointNameInput">Nazwa punktu:</label>
-        <input id="pointNameInput" type="text" value={pointName} onChange={(e) => setPointName(e.target.value)}></input>
+        <input id="pointNameInput" type="text" value={pointName} onChange={(e) => setPointName(e.target.value)} required></input>
 
         <div className="form-row">
           <div className="form-group">
