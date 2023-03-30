@@ -102,6 +102,14 @@ const beigeIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+// Other icons
+const animatedDroneIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/drone.gif',
+  iconSize: [50, 50],
+  iconAnchor: [25, 25],
+  popupAnchor: [0, 0]
+});
+
 const nameMap = {
   white: 'zdrowe',
   brown: 'podatne',
@@ -146,7 +154,7 @@ function mapType(type) {
   return out.charAt(0).toUpperCase() + out.slice(1);
 }
 
-export { getType, getIcon, mapType, nameMap, icons };
+export { getType, getIcon, mapType, nameMap, icons, animatedDroneIcon };
 
 // For debugging in Chrome dev tools:
 window.getType = getType;
