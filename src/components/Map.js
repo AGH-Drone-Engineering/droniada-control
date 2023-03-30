@@ -2,6 +2,7 @@ import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import Points from 'components/Points';
 import Shapes from 'components/Shapes';
+import DroneFlightPath from './DroneFlight';
 
 export default function MapRenderer({ position, db }) {
   return (
@@ -12,6 +13,7 @@ export default function MapRenderer({ position, db }) {
       />
       <Points db={db}></Points>
       <Shapes dbName={db}></Shapes>
+      <DroneFlightPath/>
     </MapContainer>
   );
 }

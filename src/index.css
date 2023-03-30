@@ -66,11 +66,23 @@ header {
   flex: 7;
 }
 
+.leaflet-tooltip.middle-tooltip
+{
+  height: 20px;
+  padding: 3px;
+  font-size: 1.2em;
+}
+
 .leaflet-tooltip
 {
   height: 10px;
   padding: 3px;
   font-size: 0.8em;
+}
+
+.leaflet-pane > svg path
+{
+  outline: 0;
 }
 
 main {

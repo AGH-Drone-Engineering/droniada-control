@@ -48,15 +48,21 @@ export default function Shapes({ dbName }) {
   return (
     <>
       {shapes.map((x, i) => {
-        return (
-          <Polygon positions={getPositions(x)} ref={polygonRef} key={x.id}>
-            {polygonRef.current !== undefined && [1, 2, 3, 4].map((ii) => (<Marker key={ii} icon={getIcon({ type: 'generic' })} position={getCenter(polygonRef, ii)} opacity='0'>
-              <Tooltip permanent direction={directions[ii]} content={getDistance(polygonRef, ii) + 'm'} offset={[0, 0]}></Tooltip>
-            </Marker>))
-
-            }
-          </Polygon>);
+        if (!('database' in x) || (x.database === dbName || x.database === '')) {
+          return (
+            <Polygon positions={getPositions(x)} ref={polygonRef} key={x.id} color={'color' in x ? x.color : '#3333FF'}>
+              {polygonRef.current !== undefined && [1, 2, 3, 4].map((ii) => (<Marker key={ii} icon={getIcon({ type: 'generic' })} position={getCenter(polygonRef, ii)} opacity='0'>
+                <Tooltip permanent direction={directions[ii]} content={getDistance(polygonRef, ii) + 'm'} offset={[0, 0]}></Tooltip>
+              </Marker>))
+              }
+               {polygonRef.current !== undefined && <Tooltip className='middle-tooltip' content={x.name}/>
+               }
+            </Polygon>
+          );
+        }
+        return <></>;
       })}
+
     </>
 
   );
