@@ -29,7 +29,6 @@ const directions = ['', 'bottom', 'left', 'top', 'right'];
 
 export default function Shapes({ dbName }) {
   const [shapes, setShapes] = useState([]);
-  const [bounds, setBounds] = useState([]);
   const polygonRef = useRef();
 
   useEffect(() => {
@@ -38,10 +37,6 @@ export default function Shapes({ dbName }) {
         return { id: doc.id, ...doc.data() };
       });
       setShapes(data);
-      setBounds(shapes.map((x) => {
-        return L.polygon(getPositions(x)).getBounds();
-      }));
-      console.log(bounds);
     });
   }, []);
 
