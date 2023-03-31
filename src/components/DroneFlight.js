@@ -12,7 +12,6 @@ export default function DroneFlightPath() {
       let lastData = data[data.length - 1].location;
       lastData = [lastData._lat, lastData._long];
       setDroneLocation(lastData);
-      console.log(location);
     }
   }, [data]);
 

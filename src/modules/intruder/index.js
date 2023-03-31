@@ -4,7 +4,6 @@ import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
 import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
-import useLotsOfPoints from 'debug/lots-of-points';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import useAppConfig from 'logic/FirebaseAppConfig';
 
@@ -19,7 +18,6 @@ export default function IntruderScreen() {
     setTabIndex(index);
   };
   const [filter, setFilter] = useState({});
-  useLotsOfPoints();
 
   return (
     <div className='App'>
