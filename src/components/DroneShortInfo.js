@@ -3,29 +3,36 @@ import useDroneStatus from 'logic/useDroneStatus';
 import useDronePath from 'logic/DronePath';
 import useAppConfig from 'logic/FirebaseAppConfig';
 import L from 'leaflet';
+import useLocalTime from 'logic/LocalTime';
 
 function roundToTwo(num) {
-  return +(Math.round(num + 'e+2') + 'e-2');
+  return Math.round(num * 100) / 100;
 }
 
-function useIsDroneInAir(data) {
-  const config = useAppConfig()[0];
+function useIsDroneInAir() {
+  const [config] = useAppConfig();
+  const [, data] = useDronePath();
+  const [localTime] = useLocalTime();
   const [isInAir, setIsInAir] = useState(false);
 
-  useEffect(() => {
+  function checkInAir() {
     if (data.length <= 0) {
       setIsInAir(false);
       return;
     }
     const lastPoint = data[data.length - 1];
     const serverTime = new Date(lastPoint.timestamp.seconds * 1000); // convert to JS Date object
-    const localTime = new Date(); // get current local time
     const diffInS = (localTime.getTime() - serverTime.getTime()) / 1000;
-    const alt = 'altitude' in lastPoint ? lastPoint.altitude : 1000 * 1000;
+    const alt = 'altitude' in lastPoint ? lastPoint.altitude : (1000 * 1000);
+    console.log(diffInS < config.drone_timeout && alt > config.minimum_altitude);
     setIsInAir(diffInS < config.drone_timeout && alt > config.minimum_altitude);
-  }, [data, config]);
+  }
 
-  return isInAir;
+  useEffect(() => {
+    checkInAir();
+  }, [data, config, localTime]);
+
+  return [isInAir];
 }
 
 function geoPointToLatLng(geoPoint) {
@@ -33,7 +40,7 @@ function geoPointToLatLng(geoPoint) {
 }
 
 function getSpeed(data) {
-  let speed = -1;
+  let speed = 0;
   if (data.length > 1) {
     const lastPoint = data[data.length - 1];
     const preLastPoint = data[data.length - 2];
@@ -45,10 +52,8 @@ function getSpeed(data) {
     const distance = geoPointToLatLng(lastPoint.location).distanceTo(geoPointToLatLng(preLastPoint.location));
     speed = distance / time;
     speed = roundToTwo(speed);
-    return { speed };
-  } else {
-    return { speed, state: 'grounded' };
   }
+  return { speed };
 }
 
 function getPositionAlt(data) {
@@ -59,28 +64,15 @@ function getPositionAlt(data) {
 export default function DroneShortInfo() {
   const [fbDroneStatus] = useDroneStatus();
   const [droneStatus, setDroneStatus] = useState({ status: 'grounded' });
-  // const [timeout, setTimeout] = useState(0);
   const [, droneData] = useDronePath();
-  const isInAir = useIsDroneInAir(droneData);
+  const [isInAir] = useIsDroneInAir(droneData);
 
   useEffect(() => {
     if (droneData.length > 0) {
       const status = isInAir ? 'flying' : 'grounded';
-      // setTimeout(0);
       setDroneStatus({ ...droneStatus, ...getPositionAlt(droneData), status, ...getSpeed(droneData) });
     }
-  }, [droneData]);
-
-  /** useEffect(() => {
-    setInterval(() => {
-      if (timeout > 10) {
-        setDroneStatus({ ...droneStatus, status: 'grounded' });
-        setTimeout(0);
-      }
-      console.log(timeout);
-      setTimeout(timeout + 1);
-    }, 1000);
-  }, []);**/
+  }, [droneData, isInAir]);
 
   return (
     <>
