@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import Shapes from 'components/Shapes';
 import Points from 'components/Points';
@@ -52,7 +52,7 @@ export default function ManualMapPoints() {
 
   const onChangeDateTime = (e) => {
     const date = new Date(e.target.value);
-    setPointTimeStamp(date);
+    setPointTimeStamp(toIsoString(date));
   };
 
   const onCheckedAutoTime = () => {
@@ -60,18 +60,9 @@ export default function ManualMapPoints() {
   };
 
   const onSubmit = () => {
-    addPointToMap(screenDatabase, { img: img64, name: pointName, type: pointType, shooted: false }, clickedPos, pointTimeStamp);
+    const time = timeUpdate ? toIsoString(new Date()) : pointTimeStamp;
+    addPointToMap(screenDatabase, { img: img64, name: pointName, type: pointType, shooted: false }, clickedPos, time);
   };
-
-  useEffect(() => {
-    if (!timeUpdate) { return; }
-    const interFunction = () => {
-      setPointTimeStamp(toIsoString(new Date()));
-    };
-    interFunction();
-    const interval = setInterval(interFunction, 500);
-    return () => clearInterval(interval);
-  }, [timeUpdate]);
 
   return (
     <div className='mannual-wrapper'>
@@ -121,7 +112,7 @@ export default function ManualMapPoints() {
           </div>
           <div className="form-group">
             <label htmlFor="pointTimestampInput">Data i czas:</label>
-            <input id="pointTimestampInput" type="datetime-local" value={pointTimeStamp} onChange={onChangeDateTime}></input>
+            <input id="pointTimestampInput" type="datetime-local" value={pointTimeStamp} onChange={onChangeDateTime} disabled={timeUpdate}></input>
           </div>
         </div>
         <label className="checkbox-label">
