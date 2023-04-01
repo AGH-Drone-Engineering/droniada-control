@@ -24,7 +24,6 @@ function useIsDroneInAir() {
     const serverTime = new Date(lastPoint.timestamp.seconds * 1000); // convert to JS Date object
     const diffInS = (localTime.getTime() - serverTime.getTime()) / 1000;
     const alt = 'altitude' in lastPoint ? lastPoint.altitude : (1000 * 1000);
-    console.log(diffInS < config.drone_timeout && alt > config.minimum_altitude);
     setIsInAir(diffInS < config.drone_timeout && alt > config.minimum_altitude);
   }
 
