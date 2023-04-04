@@ -3,12 +3,14 @@ import { useEffect } from 'react';
 import setupCSS from 'components/css-with-js';
 import useLotsOfPoints from 'debug/lots-of-points';
 import usePathTest from 'debug/path-test';
+import generatePdf from 'logic/generatePdf';
 
 export default function Header({ appName }) {
   useEffect(() => {
     setupCSS();
     useLotsOfPoints();
     usePathTest();
+    window.makePdf = generatePdf;
   }, []);
   return (
     <header>

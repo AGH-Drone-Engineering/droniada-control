@@ -12,7 +12,7 @@ export default function useMapPoints(dbName) {
       });
       setPoints(data);
     });
-  }, []);
+  }, [dbName]);
 
   return points;
 }

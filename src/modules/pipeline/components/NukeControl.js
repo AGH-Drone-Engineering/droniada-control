@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { db } from 'logic/fb';
 import { doc, updateDoc } from 'firebase/firestore';
 import useFixTeam from 'logic/useFixTeam';
 import ManualMapPoints from 'components/ManualMapPoints';
+import useMapPoints from 'logic/useMapPoints';
+import generatePdf from 'logic/generatePdf';
 
 export default function NukeControl() {
   const [teamState, collectionId] = useFixTeam();
+  const [pdfDb, setPdfDb] = useState('intruder-points');
+  const points = useMapPoints(pdfDb);
 
   async function fixInfrastructure(x) {
     await updateDoc(doc(db, 'repair-team', collectionId),
@@ -31,8 +35,17 @@ export default function NukeControl() {
   return (
     <div className='nuke-control'>
       <div>
+        <h2>Raport PDF z misji:</h2>
+        <hr/>
+        <label htmlFor='databaseToPdfSelect'>Wybierz bazę danych z której generowany będzie raport PDF:</label>
+        <select id="databaseToPdfSelect" onChange={(e) => setPdfDb(e.target.value)}>
+            <option value={'intruder-points'}>Intruz</option>
+            <option value={'pipeline-points'}>Rurociąg</option>
+            <option value={'tree-points'}>Drzewo życia</option>
+        </select>
+        <button onClick={() => generatePdf(pdfDb, points)}>Pobierz PDF</button>
         <h2> Rurociąg:</h2>
-        <hr></hr>
+        <hr/>
         <p>Po zakończeniu misji należy zdecydować czy powinna wkroczyć brygada remontowa</p>
         <p> Twoja decyzja: </p>
         {(teamState !== 'yes' && teamState !== 'no')
