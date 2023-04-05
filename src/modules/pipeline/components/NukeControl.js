@@ -37,13 +37,13 @@ export default function NukeControl() {
       <div>
         <h2>Raport PDF z misji:</h2>
         <hr/>
-        <label htmlFor='databaseToPdfSelect'>Wybierz bazę danych z której generowany będzie raport PDF:</label>
-        <select id="databaseToPdfSelect" onChange={(e) => setPdfDb(e.target.value)}>
+        <label htmlFor='databaseToPdfSelect'>Wybierz bazę danych z której generowany będzie raport PDF: <br/></label>
+        <select id="databaseToPdfSelect" onChange={(e) => setPdfDb(e.target.value)} style={{ width: '300px' }}>
             <option value={'intruder-points'}>Intruz</option>
             <option value={'pipeline-points'}>Rurociąg</option>
             <option value={'tree-points'}>Drzewo życia</option>
-        </select>
-        <button onClick={() => generatePdf(pdfDb, points)}>Pobierz PDF</button>
+        </select> <br/>
+        <button className='raport-btn' onClick={() => generatePdf(pdfDb, points)}>Pobierz raport w formacie PDF</button>
         <h2> Rurociąg:</h2>
         <hr/>
         <p>Po zakończeniu misji należy zdecydować czy powinna wkroczyć brygada remontowa</p>
