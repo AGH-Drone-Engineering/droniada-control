@@ -631,3 +631,18 @@ label.checkbox-label {
 .mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-ampm-field {
   display: none;
 }
+.tabs-container
+{
+  float: left;
+}
+.slider-container
+{
+  margin: 0;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.tab-packer
+{
+  display: flex;
+}

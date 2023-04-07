@@ -39,6 +39,12 @@ export default function PipelineScreen() {
     setIsOpen(fixState === 'yes' || fixState === 'no');
   }, [fixState]);
 
+  const [scale, setScale] = useState(50); // initial scale value
+
+  const handleScaleChange = (event) => {
+    setScale(event.target.value);
+  };
+
   return (
     <div className='App'>
       <div id='header'>
@@ -46,46 +52,59 @@ export default function PipelineScreen() {
         <Stats db={screenDatabase} />
       </div>
       <div>
-      {isOpen && (
-        <div className="popup">
-          <div className="popup-content">
-            <span className="close" onClick={handleOkClick}>
-              &times;
-            </span>
-            <p>Po wnikliwej analizie infrastruktury krytycznej, nasz zespół doszedł do wniosku, że
-              {fixState === 'yes' ? <> należy <b>poprosić ekipę remontową</b> o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, <b>infrastruktura jest sprawna.</b></>}</p>
-            <button className='xx' onClick={handleOkClick}>OK</button>
+        {isOpen && (
+          <div className="popup">
+            <div className="popup-content">
+              <span className="close" onClick={handleOkClick}>
+                &times;
+              </span>
+              <p>Po wnikliwej analizie infrastruktury krytycznej, nasz zespół doszedł do wniosku, że
+                {fixState === 'yes' ? <> należy <b>poprosić ekipę remontową</b> o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, <b>infrastruktura jest sprawna.</b></>}</p>
+              <button className='xx' onClick={handleOkClick}>OK</button>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-      <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
-        <TabList>
-          <Tab><p>Model 3D skanu terenu </p></Tab>
-          <Tab><p>Obraz mapy z lotu ptaka</p></Tab>
-          <Tab><p>Mapa z zaznaczonymi punktami</p></Tab>
-        </TabList>
+        )}
+      </div>
+      <div>
+        <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
+          <div className='tab-packer'>
+            <div className='tabs-container'>
+              <TabList>
+                <Tab><p>Model 3D skanu terenu</p></Tab>
+                <Tab><p>Obraz mapy z lotu ptaka</p></Tab>
+                <Tab><p>Mapa z zaznaczonymi punktami</p></Tab>
+              </TabList>
+            </div>
+            {tabIndex === 0 && <div className='slider-container'>
+              <label htmlFor='scale-slider'>Skala modelu:</label>
 
-        <TabPanel>
-          <nav className='renderer-menu'></nav>
-          <ModelRenderer />
-        </TabPanel>
-        <TabPanel>
-          <LikeSatelliteMap />
-        </TabPanel>
-        <TabPanel>
-          <FilterContext.Provider value={{ filter, setFilter }}>
-            <main>
-              <div className='map-wrapper'>
-                <MapRenderer position={position} db={screenDatabase} />
-              </div>
-              <div className='right-list'>
-                <UnorderedPoints db={screenDatabase} />
-              </div>
-            </main>
-          </FilterContext.Provider>
-        </TabPanel>
-      </Tabs>
+              <input type='range' id='scale-slider' name='scale' min='0' max='100' value={scale} onChange={handleScaleChange} />
+              <span>{scale}%</span>
+            </div>}
+
+          </div>
+          <TabPanel>
+            <nav className='renderer-menu'></nav>
+            <ModelRenderer scale={scale}/>
+          </TabPanel>
+          <TabPanel>
+            <LikeSatelliteMap />
+          </TabPanel>
+          <TabPanel>
+            <FilterContext.Provider value={{ filter, setFilter }}>
+              <main>
+                <div className='map-wrapper'>
+                  <MapRenderer position={position} db={screenDatabase} />
+                </div>
+                <div className='right-list'>
+                  <UnorderedPoints db={screenDatabase} />
+                </div>
+              </main>
+            </FilterContext.Provider>
+          </TabPanel>
+        </Tabs>
+
+      </div>
 
     </div>
   );
