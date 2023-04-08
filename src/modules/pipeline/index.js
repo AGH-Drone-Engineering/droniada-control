@@ -33,11 +33,11 @@ export default function PipelineScreen() {
     setIsOpen(false);
   };
 
-  const [fixState] = useFixTeam();
+  const [fixState, , missionTime] = useFixTeam();
 
   useEffect(() => {
-    setIsOpen(fixState === 'yes' || fixState === 'no');
-  }, [fixState]);
+    setIsOpen(fixState === 'yes' || fixState === 'no' || missionTime > 0);
+  }, [fixState, missionTime]);
 
   const [scale, setScale] = useState(50); // initial scale value
 
@@ -58,8 +58,11 @@ export default function PipelineScreen() {
               <span className="close" onClick={handleOkClick}>
                 &times;
               </span>
-              <p>Po wnikliwej analizie infrastruktury krytycznej, nasz zespół doszedł do wniosku, że
-                {fixState === 'yes' ? <> należy <b>poprosić ekipę remontową</b> o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, <b>infrastruktura jest sprawna.</b></>}</p>
+              {(fixState === 'yes' || fixState === 'no') && <>
+                <p>Po wnikliwej analizie infrastruktury krytycznej, nasz zespół doszedł do wniosku, że
+                  {fixState === 'yes' ? <> należy <b>poprosić ekipę remontową</b> o usunięcie części usterek.</> : <> nie potrzeba ekipy remontowej, <b>infrastruktura jest sprawna.</b></>}<br /></p></>
+              }
+              {missionTime > 0 && <p>Misja zajęła nam {missionTime} minut(y)</p>}
               <button className='xx' onClick={handleOkClick}>OK</button>
             </div>
           </div>
@@ -78,14 +81,14 @@ export default function PipelineScreen() {
             {tabIndex === 0 && <div className='slider-container'>
               <label htmlFor='scale-slider'>Skala modelu:</label>
 
-              <input type='range' id='scale-slider' name='scale' min='0' max='100' value={scale} onChange={handleScaleChange} />
+              <input type='range' id='scale-slider' name='scale' min='0' max='200' value={scale} onChange={handleScaleChange} style={{ width: 200 }} />
               <span>{scale}%</span>
             </div>}
 
           </div>
           <TabPanel>
             <nav className='renderer-menu'></nav>
-            <ModelRenderer scale={scale}/>
+            <ModelRenderer scale={scale} />
           </TabPanel>
           <TabPanel>
             <LikeSatelliteMap />

@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import useAppConfig from 'logic/FirebaseAppConfig';
+import MissionTimePopup from 'components/MissionTimePopup';
 
 const screenDatabase = 'intruder-points';
 
@@ -24,7 +25,7 @@ export default function IntruderScreen() {
       <div id='header'>
         <Header appName='Intruz' />
       </div>
-
+      <MissionTimePopup/>
       <Tabs selectedIndex={tabIndex} onSelect={handleTabChange}>
         <TabList>
           <Tab><p>Mapa z zaznaczonymi punktami</p></Tab>

@@ -21,7 +21,7 @@ export default function generatePdf(dbName, data) {
     const time = fbTimeToTime(item);
     const link = {
       text: 'Link',
-      link: `https://www.google.pl/maps/@${item.location._lat},${item.location._long},310m/data=!3m1!1e3?hl=pl`,
+      link: `https://www.google.pl/maps/place/${item.location._lat}N+${item.location._long}E/@${item.location._lat},${item.location._long},310m/data=!3m1!1e3?hl=pl`,
       target: '_blank',
       style: 'link'
     };

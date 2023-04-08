@@ -9,9 +9,9 @@ export default function useFixTeam() {
   useEffect(() => {
     return onSnapshot(collection(db, 'repair-team'), (querySnapshot) => {
       const firstDoc = querySnapshot.docs[0];
-      setTeamState(firstDoc.data().state);
+      setTeamState(firstDoc.data());
       setCollectionId(firstDoc.id);
     });
   }, []);
-  return [teamState, collectionId];
+  return [teamState.state, collectionId, teamState.time];
 }
