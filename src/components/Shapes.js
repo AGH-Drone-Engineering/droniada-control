@@ -29,6 +29,7 @@ const directions = ['', 'bottom', 'left', 'top', 'right'];
 
 export default function Shapes({ dbName }) {
   const [shapes, setShapes] = useState([]);
+  const [polygon, setPolygon] = useState({ current: undefined });
   const polygonRef = useRef();
 
   useEffect(() => {
@@ -40,17 +41,46 @@ export default function Shapes({ dbName }) {
     });
   }, []);
 
+  // @Carbon
+  // Ten kod nie ma prawa bytu, ale działa
+  // Nie znam innego sposobu jak obsłużyć polygonRef tak, aby wyświetlane były "tooltipy" z szerokościami boków strefy.
+  // Jeśli poprostu nie było tego poniżej to wyświetlało tooltipy na każdym panelu oprócz Rurociągu na kompie, bo Rurociąg na telefonie już był wyświetlony poprawnie
+  // Podejrzewam że obsługa ref'ów powinna odbywać się kompletnie inaczej więc tutaj komentuje.
+  // ======================================
+
+  // To żeby działało przy Intruzie, Drzewie życia:
+  /* useEffect(() => {
+    if ('current' in polygonRef && polygonRef.current !== undefined) {
+      setPolygon(polygonRef);
+    }
+  }, [polygonRef, polygonRef.current]);
+
+  // To żeby działało przy Rurociągu:
+  useEffect(() => {
+    if ('current' in polygonRef && polygonRef.current !== undefined) {
+      setPolygon(polygonRef);
+    }
+  }); */
+
+  // Nowe dziwne rozwiązanie, ale działa:
+  useEffect(() => {
+    if ('current' in polygonRef && polygonRef.current !== undefined) {
+      setPolygon(polygonRef);
+    }
+  }, [shapes, polygonRef.current]);
+  // ======================================
+
   return (
     <>
       {shapes.map((x, i) => {
         if (!('database' in x) || (x.database === dbName || x.database === '')) {
           return (
             <Polygon positions={getPositions(x)} ref={polygonRef} key={x.id} color={'color' in x ? x.color : '#3333FF'}>
-              {polygonRef.current !== undefined && [1, 2, 3, 4].map((ii) => (<Marker key={ii} icon={getIcon({ type: 'generic' })} position={getCenter(polygonRef, ii)} opacity='0'>
-                <Tooltip permanent direction={directions[ii]} content={getDistance(polygonRef, ii) + 'm'} offset={[0, 0]}></Tooltip>
+              {polygon.current !== undefined && [1, 2, 3, 4].map((ii) => (<Marker key={ii} icon={getIcon({ type: 'generic' })} position={getCenter(polygon, ii)} opacity='0'>
+                <Tooltip permanent direction={directions[ii]} content={getDistance(polygon, ii) + 'm'} offset={[0, 0]}></Tooltip>
               </Marker>))
               }
-               {polygonRef.current !== undefined && <Tooltip className='middle-tooltip' content={x.name}/>
+               {polygon.current !== undefined && <Tooltip className='middle-tooltip' content={x.name}/>
                }
             </Polygon>
           );
