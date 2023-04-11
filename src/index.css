@@ -342,14 +342,24 @@ h1 {
   font-size: 16px;
 }
 
-.nuke-control .no-fix-infrastructure:hover
+.nuke-control .raport-btn
 {
-  background-color: #117711;
+  background-color: #1199EE;
+}
+
+.nuke-control .raport-btn:hover
+{
+  background-color: #1177EE;
 }
 
 .nuke-control .no-fix-infrastructure
 {
   background-color: #119911;
+}
+
+.nuke-control .no-fix-infrastructure:hover
+{
+  background-color: #117711;
 }
 
 .nuke-control .fix-infrastructure
@@ -620,4 +630,19 @@ label.checkbox-label {
 
 .mannual-controls input[type="datetime-local"]::-webkit-datetime-edit-ampm-field {
   display: none;
+}
+.tabs-container
+{
+  float: left;
+}
+.slider-container
+{
+  margin: 0;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.tab-packer
+{
+  display: flex;
 }

@@ -7,17 +7,22 @@ import { ref, getDownloadURL } from 'firebase/storage';
 import { storage, db } from 'logic/fb';
 import { collection, onSnapshot } from 'firebase/firestore';
 
-export default function ModelRenderer() {
+export default function ModelRenderer({ scale }) {
   const [gltf, setGltf] = useState([]);
   const [loadErr, setLoadErr] = useState(false);
   const [version, setVersion] = useState(0);
   const [currVersion, setCurrVersion] = useState(0);
   const [updateCount, setupdateCount] = useState(0);
   const [showUpdate, setShowUpdate] = useState(false);
+  const [computedScale, setComputedScale] = useState(50);
   const targetRef = useRef();
   const cameraRef = useRef();
   const canvasRef = useRef();
   const mainRef = useRef();
+
+  useEffect(() => {
+    setComputedScale(5 * (scale / 100));
+  }, [scale]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, '3d-model-data'), (snapshot) => {
@@ -74,7 +79,7 @@ export default function ModelRenderer() {
       </div>
         : <></>}
 
-      <Canvas camera={{ position: [0, -10, 10], fov: 30 }}
+      <Canvas camera={{ position: [0, 3, 10], fov: 30 }}
         style={{
           backgroundColor: '#111a21',
           width: '100vw',
@@ -84,7 +89,7 @@ export default function ModelRenderer() {
         <ambientLight intensity={0.3} />
         <spotLight position={[10, 20, 10]} angle={0.45} penumbra={1} />
         <pointLight position={[-10, -10, -10]} />
-        <mesh ref={targetRef} scale={[1, 1, 1]} rotation={[-89.5, -0.01, 0]}>
+        <mesh ref={targetRef} scale={[computedScale, computedScale, computedScale]} rotation={[0, 0, 0]} position={[0, 0, 0]}>
           <primitive object={gltf} />
           <meshStandardMaterial color={'#AABBCC'} metalness={0.2} vertexColors={true}/>
         </mesh>
@@ -92,7 +97,7 @@ export default function ModelRenderer() {
           camera={cameraRef.current}
           enableDamping
           dampingFactor={0.5}
-          target={[1, -1, 1]}
+          target={[0, 0, 0]}
         />
       </Canvas>
     </div>

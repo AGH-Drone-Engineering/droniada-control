@@ -5,6 +5,7 @@ import useInitalLocation from 'logic/useInitalLocation';
 import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
 import Stats from 'components/Stats';
+import MissionTimePopup from 'components/MissionTimePopup';
 
 const screenDatabase = 'tree-points';
 
@@ -18,6 +19,7 @@ export default function IntruderScreen() {
         <Header appName='Drzewo życia' />
         <Stats db={screenDatabase} />
       </div>
+      <MissionTimePopup/>
       <FilterContext.Provider value={{ filter, setFilter }}>
         <main>
           <div className='map-wrapper'>
