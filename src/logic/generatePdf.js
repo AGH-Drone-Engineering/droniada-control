@@ -1,8 +1,24 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { mapType, getType } from 'logic/TypeLogic';
+import { demoImg } from 'logic/demoImg';
 
 const mapping = { 'intruder-points': 'intruz', 'pipeline-points': 'rurociąg', 'tree-points': 'drzewo życia' };
+
+const isValidBase64Jpeg = (str) => {
+  if (!str) return false;
+
+  // Check if the string has the correct prefix for a base64 encoded JPEG
+
+  // Remove the prefix and validate the base64 content
+  const base64Content = str;
+  try {
+    const decoded = atob(base64Content);
+    return decoded.length > 0;
+  } catch (e) {
+    return false;
+  }
+};
 
 function fbTimeToTime(point) {
   if (!('timestamp' in point)) {
@@ -91,7 +107,7 @@ export default function generatePdf(dbName, data) {
         style: 'header2'
       },
       ...data.map((item) => ([{
-        image: `data:image/jpeg;base64,/9j/${item.img}`,
+        image: `data:image/jpeg;base64,/9j/${isValidBase64Jpeg(item.img) ? item.img : demoImg}`,
         width: 150,
         height: 150,
         style: 'detection_image'
