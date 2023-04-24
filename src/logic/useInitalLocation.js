@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from 'logic/fb';
 
-// Katowice Muchowiec Fallback position
-const positionFallback = { lat: 50.238284041030674, lng: 19.032943917374634 };
+// Pola Marsowe
+export const positionFallback = { lat: 50.285175, lng: 18.976168 };
 
 function calculateCentroid(points) {
   // points = Object.values(points);
@@ -27,19 +27,21 @@ export default function useInitalLocation(dbname) {
       console.error('Database ' + dbname + ' error, switching to fallback map starting point');
       setFallback(true);
     }
-  }, []);
+  }, [dbname]);
 
   useEffect(() => {
-    if (fallback === true) {
+    if (fallback) {
       setCenter(positionFallback);
     } else {
-      return onSnapshot(collection(db, dbname), (querySnapshot) => {
+      const unsubscribe = onSnapshot(collection(db, dbname), (querySnapshot) => {
         const data = querySnapshot.docs;
         const centroid = calculateCentroid(data);
         setCenter(centroid);
       });
+
+      return () => unsubscribe();
     }
-  }, [fallback]);
+  }, [fallback, dbname]);
 
   return [center];
 }

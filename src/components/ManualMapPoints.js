@@ -5,6 +5,7 @@ import Points from 'components/Points';
 import useInitalLocation from 'logic/useInitalLocation';
 import { icons, mapType } from 'logic/TypeLogic';
 import { addPointToMap } from 'logic/FbPointLogic';
+import MapCenter from 'components/MapCenter';
 
 function toIsoString(date) {
   const pad = function(num) {
@@ -75,6 +76,7 @@ export default function ManualMapPoints() {
           <Points db={screenDatabase} key={key + '_points'}></Points>
           <Shapes dbName={screenDatabase} key={key + '_shapes'}></Shapes>
           <Marker position={clickedPos}></Marker>
+          <MapCenter position={position} dbname={screenDatabase}/>
           <MapEvents />
         </MapContainer>
       </div>
