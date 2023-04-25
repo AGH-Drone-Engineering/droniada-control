@@ -17,7 +17,7 @@ export default function MapCenter({ position, alwaysUpdate = false }) {
     if (onceFlag || alwaysUpdate) {
       map.panTo(position);
     }
-  });
+  }, [position, onceFlag, alwaysUpdate]);
 
   return null;
 }
