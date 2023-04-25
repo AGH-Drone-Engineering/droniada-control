@@ -76,7 +76,7 @@ export default function ManualMapPoints() {
           <Points db={screenDatabase} key={key + '_points'}></Points>
           <Shapes dbName={screenDatabase} key={key + '_shapes'}></Shapes>
           <Marker position={clickedPos}></Marker>
-          <MapCenter position={position} dbname={screenDatabase}/>
+          <MapCenter position={position} alwaysUpdate={true}/>
           <MapEvents />
         </MapContainer>
       </div>
