@@ -110,6 +110,13 @@ const animatedDroneIcon = L.icon({
   popupAnchor: [0, 0]
 });
 
+const dogIcon = L.icon({
+  iconUrl: process.env.PUBLIC_URL + '/robot.png',
+  iconSize: [30, 40],
+  iconAnchor: [25, 25],
+  popupAnchor: [0, 0]
+});
+
 const nameMap = {
   white: 'zdrowe',
   brown: 'podatne',
@@ -154,7 +161,7 @@ function mapType(type) {
   return out.charAt(0).toUpperCase() + out.slice(1);
 }
 
-export { getType, getIcon, mapType, nameMap, icons, animatedDroneIcon };
+export { getType, getIcon, mapType, nameMap, icons, animatedDroneIcon, dogIcon };
 
 // For debugging in Chrome dev tools:
 window.getType = getType;

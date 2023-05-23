@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { FilterContext } from 'logic/FilterContext';
 import Stats from 'components/Stats';
 import MissionTimePopup from 'components/MissionTimePopup';
+import RoboDogMarker from 'components/RoboDogMarker';
 
 const screenDatabase = 'tree-points';
 
@@ -23,7 +24,9 @@ export default function IntruderScreen() {
       <FilterContext.Provider value={{ filter, setFilter }}>
         <main>
           <div className='map-wrapper'>
-            <MapRenderer position={position} db={screenDatabase} />
+            <MapRenderer position={position} db={screenDatabase} >
+              <RoboDogMarker/>
+            </MapRenderer>
           </div>
           <div className='right-list'>
             <UnorderedPoints db={screenDatabase} />
