@@ -5,7 +5,7 @@ import Shapes from 'components/Shapes';
 import DroneFlightPath from 'components/DroneFlight';
 import MapCenter from 'components/MapCenter';
 
-export default function MapRenderer({ position, db }) {
+export default function MapRenderer({ position, db, children }) {
   return (
     <MapContainer center={position} zoom={17} style={{ height: '100%' }}>
       <TileLayer
@@ -15,6 +15,7 @@ export default function MapRenderer({ position, db }) {
       <Points db={db}></Points>
       <Shapes dbName={db}></Shapes>
       <DroneFlightPath/>
+      {children}
       <MapCenter position={position}/>
     </MapContainer>
   );
