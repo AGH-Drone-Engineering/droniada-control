@@ -30,7 +30,7 @@ function fbTimeToTime(point) {
   return '' + timeString;
 }
 
-export default function generatePdf(dbName, data) {
+export default function generatePdf(dbName, data, dronePoints) {
   const tableBody = data.map((item) => {
     const name = item.name;
     const type = mapType(getType(item));
@@ -114,7 +114,18 @@ export default function generatePdf(dbName, data) {
       }, { text: item.name }])),
       {
         text: `\nIlość: ${data.length}`
-      }
+      },
+      {
+        text: 'Logi z drona',
+        style: 'header2'
+      },
+      {
+        text: 'Dron zarejstrował swoją pozycję w następujących miejscach:',
+        style: 'header3'
+      },
+      ...dronePoints.map((item) => ({
+        text: `Szerokość: ${item.location._lat}, Długość: ${item.location._long}, Wysokość: ${item.altitude}m, Czas: ${'timestamp' in item ? (item.timestamp.toDate().toLocaleTimeString('pl-PL')) : 'bd'}`
+      }))
     ],
     styles: {
       formated: {
