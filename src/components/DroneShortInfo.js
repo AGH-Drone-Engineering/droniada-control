@@ -44,8 +44,8 @@ function getSpeed(data) {
     const lastPoint = data[data.length - 1];
     const preLastPoint = data[data.length - 2];
 
-    const lastTime = new Date(lastPoint.timestamp.seconds * 1000);
-    const preLastTime = new Date(preLastPoint.timestamp.seconds * 1000);
+    const lastTime = new Date(lastPoint.timestamp.seconds * 1000 + lastPoint.timestamp.nanoseconds / 1e6);
+    const preLastTime = new Date(preLastPoint.timestamp.seconds * 1000 + preLastPoint.timestamp.nanoseconds / 1e6);
     const time = (lastTime.getTime() - preLastTime.getTime()) / 1000;
 
     const distance = geoPointToLatLng(lastPoint.location).distanceTo(geoPointToLatLng(preLastPoint.location));
@@ -83,7 +83,6 @@ export default function DroneShortInfo() {
           </>)
         : (
           <>
-            {}
             <img src={process.env.PUBLIC_URL + '/drone-clouds.png'} alt='drone-icon' />
             <div><p>{droneStatus.speed} m/s {droneStatus.position._lat}°N <br /> </p><p> {droneStatus.altitude} m {droneStatus.position._long}°E <br /></p><p>{fbDroneStatus.status}</p></div>
           </>)}
