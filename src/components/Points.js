@@ -45,16 +45,15 @@ export default function Points({ db }) {
                 </div>
               </Popup>
             </Marker>
-            {shooted
-              ? <Marker
+            {shooted &&
+              <Marker
                 key={point.id + '_shooted_icon'}
                 position={[point.location.latitude, point.location.longitude]}
                 icon={getIcon({ type: 'generic' })}
                 zIndexOffset={0}
                 interactive={false}
               >
-              </Marker>
-              : <></>}
+              </Marker>}
 
           </>
         );

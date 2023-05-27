@@ -35,8 +35,12 @@ export default function useInitalLocation(dbname) {
     } else {
       const unsubscribe = onSnapshot(collection(db, dbname), (querySnapshot) => {
         const data = querySnapshot.docs;
-        const centroid = calculateCentroid(data);
-        setCenter(centroid);
+        try {
+          const centroid = calculateCentroid(data);
+          setCenter(centroid);
+        } catch (e) {
+          setCenter(positionFallback);
+        }
       });
 
       return () => unsubscribe();

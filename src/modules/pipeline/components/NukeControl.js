@@ -6,11 +6,13 @@ import ManualMapPoints from 'components/ManualMapPoints';
 import useMapPoints from 'logic/useMapPoints';
 import generatePdf from 'logic/generatePdf';
 import HeaderMarker from 'components/headerMarker';
+import useDronePath from 'logic/DronePath';
 
 export default function NukeControl() {
   const [teamState, collectionId, time] = useFixTeam();
   const [pdfDb, setPdfDb] = useState('intruder-points');
   const [taskTime, setTaskTime] = useState(0);
+  const [, dronePoints] = useDronePath();
   const points = useMapPoints(pdfDb);
 
   async function fixInfrastructure(x) {
@@ -54,7 +56,7 @@ export default function NukeControl() {
             <option value={'pipeline-points'}>Rurociąg</option>
             <option value={'tree-points'}>Drzewo życia</option>
         </select> <br/>
-        <button className='raport-btn' onClick={() => generatePdf(pdfDb, points)}>Pobierz raport w formacie PDF</button>
+        <button className='raport-btn' onClick={() => generatePdf(pdfDb, points, dronePoints)}>Pobierz raport w formacie PDF</button>
         <h2><HeaderMarker condition={time > 0}/> Czas wykonania misji:</h2>
         <hr/>
         <label htmlFor='taskTime'>Wprowadź czas wykonania misji w minutach: </label>
