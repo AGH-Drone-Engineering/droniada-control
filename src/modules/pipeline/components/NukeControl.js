@@ -7,6 +7,7 @@ import useMapPoints from 'logic/useMapPoints';
 import generatePdf from 'logic/generatePdf';
 import HeaderMarker from 'components/headerMarker';
 import useDronePath from 'logic/DronePath';
+import { addPointToMap } from 'logic/FbPointLogic';
 
 export default function NukeControl() {
   const [teamState, collectionId, time] = useFixTeam();
@@ -36,6 +37,23 @@ export default function NukeControl() {
       });
   }
 
+  function toIsoString(date) {
+    const pad = function(num) {
+      return (num < 10 ? '0' : '') + num;
+    };
+    return date.getFullYear() +
+      '-' + pad(date.getMonth() + 1) +
+      '-' + pad(date.getDate()) +
+      'T' + pad(date.getHours()) +
+      ':' + pad(date.getMinutes()) +
+      ':' + pad(date.getSeconds());
+  }
+
+  function fire(type) {
+    const time = toIsoString(new Date());
+    addPointToMap('intruder-points', { img: 'aaaaaaaaaaaaaaaa', name: type, type, shooted: false }, [0, 0], time);
+  }
+
   async function setupTaskTime(x) {
     await updateDoc(doc(db, 'repair-team', collectionId),
       {
@@ -56,6 +74,11 @@ export default function NukeControl() {
             <option value={'pipeline-points'}>Rurociąg</option>
             <option value={'tree-points'}>Drzewo życia</option>
         </select> <br/>
+        <button className='fire-btn' onClick={(e) => fire('fire')} style={ { backgroundColor: 'red', color: 'white' } }>F</button>
+        <button className='kask-btn' onClick={(e) => fire('kask')} style={ { backgroundColor: 'orange', color: 'white' } }>K</button>
+        <button className='intruz-btn' onClick={(e) => fire('intruz')} style={ { backgroundColor: 'purple', color: 'white' } }>I</button>
+        <button className='omdlenie-btn' onClick={(e) => fire('omdlenie')} style={ { backgroundColor: 'white', color: 'black' } }>Z</button>
+        <br/>
         <button className='raport-btn' onClick={() => generatePdf(pdfDb, points, dronePoints)}>Pobierz raport w formacie PDF</button>
         <h2><HeaderMarker condition={time > 0}/> Czas wykonania misji:</h2>
         <hr/>
