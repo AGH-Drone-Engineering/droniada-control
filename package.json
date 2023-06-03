@@ -22,9 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ."
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
