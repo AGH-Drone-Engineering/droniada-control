@@ -3,7 +3,6 @@ import Header from 'components/Header';
 import ModelRenderer from './components/ModelRenderer';
 import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import LikeSatelliteMap from './components/LikeSatelliteMap';
 import UnorderedPoints from 'components/UnorderedPoints';
 import MapRenderer from 'components/Map';
 import useInitalLocation from 'logic/useInitalLocation';
@@ -91,7 +90,7 @@ export default function PipelineScreen() {
             <ModelRenderer scale={scale} />
           </TabPanel>
           <TabPanel>
-            <LikeSatelliteMap />
+
           </TabPanel>
           <TabPanel>
             <FilterContext.Provider value={{ filter, setFilter }}>
