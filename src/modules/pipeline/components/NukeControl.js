@@ -51,7 +51,7 @@ export default function NukeControl() {
 
   function fire(type) {
     const time = toIsoString(new Date());
-    addPointToMap('intruder-points', { img: 'aaaaaaaaaaaaaaaa', name: type, type, shooted: false }, {lat: 1, lng: 1}, time);
+    addPointToMap('intruder-points', { img: 'aaaaaaaaaaaaaaaa', name: type, type, shooted: false }, { lat: 1, lng: 1 }, time);
   }
 
   async function setupTaskTime(x) {
