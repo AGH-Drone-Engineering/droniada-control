@@ -4,6 +4,6 @@ export default function ListPoints() {
   const points = useMapPoints('intruder-points');
 
   return <><h1>{points.map((x) => (
-    `Timestamp: ${x.timestamp}, Point: ${x.name}`
+    <div>`Timestamp: ${x.timestamp}, Point: ${x.name}`</div>
   ))}</h1><br/><br/></>;
 }
